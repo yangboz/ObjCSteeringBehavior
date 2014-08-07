@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		65262580199332A500581D80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6526257F199332A500581D80 /* Foundation.framework */; };
+		65262582199332A500581D80 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65262581199332A500581D80 /* CoreGraphics.framework */; };
+		65262584199332A500581D80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65262583199332A500581D80 /* UIKit.framework */; };
+		65262586199332A500581D80 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65262585199332A500581D80 /* SpriteKit.framework */; };
+		6526258C199332A500581D80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6526258A199332A500581D80 /* InfoPlist.strings */; };
+		6526258E199332A500581D80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526258D199332A500581D80 /* main.m */; };
+		65262592199332A500581D80 /* GPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65262591199332A500581D80 /* GPAppDelegate.m */; };
+		65262595199332A500581D80 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65262593199332A500581D80 /* Main_iPhone.storyboard */; };
+		65262598199332A500581D80 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65262596199332A500581D80 /* Main_iPad.storyboard */; };
+		6526259B199332A500581D80 /* GPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526259A199332A500581D80 /* GPViewController.m */; };
+		6526259E199332A500581D80 /* GPMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526259D199332A500581D80 /* GPMyScene.m */; };
+		652625A0199332A500581D80 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 6526259F199332A500581D80 /* Spaceship.png */; };
+		652625A2199332A500581D80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 652625A1199332A500581D80 /* Images.xcassets */; };
+		652625A9199332A500581D80 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652625A8199332A500581D80 /* XCTest.framework */; };
+		652625AA199332A500581D80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6526257F199332A500581D80 /* Foundation.framework */; };
+		652625AB199332A500581D80 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65262583199332A500581D80 /* UIKit.framework */; };
+		652625B3199332A500581D80 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 652625B1199332A500581D80 /* InfoPlist.strings */; };
+		652625B5199332A500581D80 /* ObjCSteeringBehaviorDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625B4199332A500581D80 /* ObjCSteeringBehaviorDemoTests.m */; };
+		652625D2199337D900581D80 /* Vector2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625D1199337D900581D80 /* Vector2D.m */; };
+		652625D3199337D900581D80 /* Vector2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625D1199337D900581D80 /* Vector2D.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		652625AC199332A500581D80 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65262574199332A400581D80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6526257B199332A400581D80;
+			remoteInfo = ObjCSteeringBehaviorDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6526257C199332A500581D80 /* ObjCSteeringBehaviorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ObjCSteeringBehaviorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6526257F199332A500581D80 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		65262581199332A500581D80 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		65262583199332A500581D80 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		65262585199332A500581D80 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		65262589199332A500581D80 /* ObjCSteeringBehaviorDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObjCSteeringBehaviorDemo-Info.plist"; sourceTree = "<group>"; };
+		6526258B199332A500581D80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6526258D199332A500581D80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6526258F199332A500581D80 /* ObjCSteeringBehaviorDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ObjCSteeringBehaviorDemo-Prefix.pch"; sourceTree = "<group>"; };
+		65262590199332A500581D80 /* GPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPAppDelegate.h; sourceTree = "<group>"; };
+		65262591199332A500581D80 /* GPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPAppDelegate.m; sourceTree = "<group>"; };
+		65262594199332A500581D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		65262597199332A500581D80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		65262599199332A500581D80 /* GPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPViewController.h; sourceTree = "<group>"; };
+		6526259A199332A500581D80 /* GPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPViewController.m; sourceTree = "<group>"; };
+		6526259C199332A500581D80 /* GPMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPMyScene.h; sourceTree = "<group>"; };
+		6526259D199332A500581D80 /* GPMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPMyScene.m; sourceTree = "<group>"; };
+		6526259F199332A500581D80 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		652625A1199332A500581D80 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		652625A7199332A500581D80 /* ObjCSteeringBehaviorDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObjCSteeringBehaviorDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		652625A8199332A500581D80 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		652625B0199332A500581D80 /* ObjCSteeringBehaviorDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ObjCSteeringBehaviorDemoTests-Info.plist"; sourceTree = "<group>"; };
+		652625B2199332A500581D80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		652625B4199332A500581D80 /* ObjCSteeringBehaviorDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCSteeringBehaviorDemoTests.m; sourceTree = "<group>"; };
+		652625D0199337D900581D80 /* Vector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
+		652625D1199337D900581D80 /* Vector2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2D.m; sourceTree = "<group>"; };
+		652625D41993386C00581D80 /* GPIArrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIArrive.h; sourceTree = "<group>"; };
+		652625D51993396D00581D80 /* GPIVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIVehicle.h; sourceTree = "<group>"; };
+		652625D619933A3B00581D80 /* GPIAvoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIAvoid.h; sourceTree = "<group>"; };
+		652625D719933A9A00581D80 /* GPIEvade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIEvade.h; sourceTree = "<group>"; };
+		652625D819933ADD00581D80 /* GPIFlee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIFlee.h; sourceTree = "<group>"; };
+		652625D919933B1100581D80 /* GPIFollowPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIFollowPath.h; sourceTree = "<group>"; };
+		652625DA19933BE800581D80 /* GPIFlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIFlock.h; sourceTree = "<group>"; };
+		652625DB19933C1B00581D80 /* GPIPursue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIPursue.h; sourceTree = "<group>"; };
+		652625DC19933C4B00581D80 /* GPISeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPISeek.h; sourceTree = "<group>"; };
+		652625DD19933C7700581D80 /* GPIWander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIWander.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65262579199332A400581D80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65262582199332A500581D80 /* CoreGraphics.framework in Frameworks */,
+				65262584199332A500581D80 /* UIKit.framework in Frameworks */,
+				65262586199332A500581D80 /* SpriteKit.framework in Frameworks */,
+				65262580199332A500581D80 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652625A4199332A500581D80 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652625A9199332A500581D80 /* XCTest.framework in Frameworks */,
+				652625AB199332A500581D80 /* UIKit.framework in Frameworks */,
+				652625AA199332A500581D80 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		65262573199332A400581D80 = {
+			isa = PBXGroup;
+			children = (
+				65262587199332A500581D80 /* ObjCSteeringBehaviorDemo */,
+				652625AE199332A500581D80 /* ObjCSteeringBehaviorDemoTests */,
+				6526257E199332A500581D80 /* Frameworks */,
+				6526257D199332A500581D80 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6526257D199332A500581D80 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6526257C199332A500581D80 /* ObjCSteeringBehaviorDemo.app */,
+				652625A7199332A500581D80 /* ObjCSteeringBehaviorDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6526257E199332A500581D80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6526257F199332A500581D80 /* Foundation.framework */,
+				65262581199332A500581D80 /* CoreGraphics.framework */,
+				65262583199332A500581D80 /* UIKit.framework */,
+				65262585199332A500581D80 /* SpriteKit.framework */,
+				652625A8199332A500581D80 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		65262587199332A500581D80 /* ObjCSteeringBehaviorDemo */ = {
+			isa = PBXGroup;
+			children = (
+				652625C9199337D900581D80 /* com */,
+				65262590199332A500581D80 /* GPAppDelegate.h */,
+				65262591199332A500581D80 /* GPAppDelegate.m */,
+				65262593199332A500581D80 /* Main_iPhone.storyboard */,
+				65262596199332A500581D80 /* Main_iPad.storyboard */,
+				65262599199332A500581D80 /* GPViewController.h */,
+				6526259A199332A500581D80 /* GPViewController.m */,
+				6526259C199332A500581D80 /* GPMyScene.h */,
+				6526259D199332A500581D80 /* GPMyScene.m */,
+				6526259F199332A500581D80 /* Spaceship.png */,
+				652625A1199332A500581D80 /* Images.xcassets */,
+				65262588199332A500581D80 /* Supporting Files */,
+			);
+			path = ObjCSteeringBehaviorDemo;
+			sourceTree = "<group>";
+		};
+		65262588199332A500581D80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				65262589199332A500581D80 /* ObjCSteeringBehaviorDemo-Info.plist */,
+				6526258A199332A500581D80 /* InfoPlist.strings */,
+				6526258D199332A500581D80 /* main.m */,
+				6526258F199332A500581D80 /* ObjCSteeringBehaviorDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		652625AE199332A500581D80 /* ObjCSteeringBehaviorDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				652625B4199332A500581D80 /* ObjCSteeringBehaviorDemoTests.m */,
+				652625AF199332A500581D80 /* Supporting Files */,
+			);
+			path = ObjCSteeringBehaviorDemoTests;
+			sourceTree = "<group>";
+		};
+		652625AF199332A500581D80 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				652625B0199332A500581D80 /* ObjCSteeringBehaviorDemoTests-Info.plist */,
+				652625B1199332A500581D80 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		652625C9199337D900581D80 /* com */ = {
+			isa = PBXGroup;
+			children = (
+				652625CA199337D900581D80 /* lookbackon */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		652625CA199337D900581D80 /* lookbackon */ = {
+			isa = PBXGroup;
+			children = (
+				652625CB199337D900581D80 /* AI */,
+			);
+			path = lookbackon;
+			sourceTree = "<group>";
+		};
+		652625CB199337D900581D80 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				652625CC199337D900581D80 /* steeringBehavior */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		652625CC199337D900581D80 /* steeringBehavior */ = {
+			isa = PBXGroup;
+			children = (
+				652625D41993386C00581D80 /* GPIArrive.h */,
+				652625D0199337D900581D80 /* Vector2D.h */,
+				652625D1199337D900581D80 /* Vector2D.m */,
+				652625D51993396D00581D80 /* GPIVehicle.h */,
+				652625D619933A3B00581D80 /* GPIAvoid.h */,
+				652625D719933A9A00581D80 /* GPIEvade.h */,
+				652625D819933ADD00581D80 /* GPIFlee.h */,
+				652625D919933B1100581D80 /* GPIFollowPath.h */,
+				652625DA19933BE800581D80 /* GPIFlock.h */,
+				652625DB19933C1B00581D80 /* GPIPursue.h */,
+				652625DC19933C4B00581D80 /* GPISeek.h */,
+				652625DD19933C7700581D80 /* GPIWander.h */,
+			);
+			path = steeringBehavior;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6526257B199332A400581D80 /* ObjCSteeringBehaviorDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652625B8199332A500581D80 /* Build configuration list for PBXNativeTarget "ObjCSteeringBehaviorDemo" */;
+			buildPhases = (
+				65262578199332A400581D80 /* Sources */,
+				65262579199332A400581D80 /* Frameworks */,
+				6526257A199332A400581D80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ObjCSteeringBehaviorDemo;
+			productName = ObjCSteeringBehaviorDemo;
+			productReference = 6526257C199332A500581D80 /* ObjCSteeringBehaviorDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		652625A6199332A500581D80 /* ObjCSteeringBehaviorDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 652625BB199332A500581D80 /* Build configuration list for PBXNativeTarget "ObjCSteeringBehaviorDemoTests" */;
+			buildPhases = (
+				652625A3199332A500581D80 /* Sources */,
+				652625A4199332A500581D80 /* Frameworks */,
+				652625A5199332A500581D80 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				652625AD199332A500581D80 /* PBXTargetDependency */,
+			);
+			name = ObjCSteeringBehaviorDemoTests;
+			productName = ObjCSteeringBehaviorDemoTests;
+			productReference = 652625A7199332A500581D80 /* ObjCSteeringBehaviorDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		65262574199332A400581D80 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = GP;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = GODPAPER;
+				TargetAttributes = {
+					652625A6199332A500581D80 = {
+						TestTargetID = 6526257B199332A400581D80;
+					};
+				};
+			};
+			buildConfigurationList = 65262577199332A400581D80 /* Build configuration list for PBXProject "ObjCSteeringBehaviorDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 65262573199332A400581D80;
+			productRefGroup = 6526257D199332A500581D80 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6526257B199332A400581D80 /* ObjCSteeringBehaviorDemo */,
+				652625A6199332A500581D80 /* ObjCSteeringBehaviorDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6526257A199332A400581D80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652625A0199332A500581D80 /* Spaceship.png in Resources */,
+				652625A2199332A500581D80 /* Images.xcassets in Resources */,
+				65262598199332A500581D80 /* Main_iPad.storyboard in Resources */,
+				65262595199332A500581D80 /* Main_iPhone.storyboard in Resources */,
+				6526258C199332A500581D80 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652625A5199332A500581D80 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652625B3199332A500581D80 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		65262578199332A400581D80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6526258E199332A500581D80 /* main.m in Sources */,
+				6526259E199332A500581D80 /* GPMyScene.m in Sources */,
+				652625D2199337D900581D80 /* Vector2D.m in Sources */,
+				6526259B199332A500581D80 /* GPViewController.m in Sources */,
+				65262592199332A500581D80 /* GPAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		652625A3199332A500581D80 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				652625D3199337D900581D80 /* Vector2D.m in Sources */,
+				652625B5199332A500581D80 /* ObjCSteeringBehaviorDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		652625AD199332A500581D80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6526257B199332A400581D80 /* ObjCSteeringBehaviorDemo */;
+			targetProxy = 652625AC199332A500581D80 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6526258A199332A500581D80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6526258B199332A500581D80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		65262593199332A500581D80 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65262594199332A500581D80 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		65262596199332A500581D80 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				65262597199332A500581D80 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		652625B1199332A500581D80 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				652625B2199332A500581D80 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		652625B6199332A500581D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		652625B7199332A500581D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		652625B9199332A500581D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjCSteeringBehaviorDemo/ObjCSteeringBehaviorDemo-Prefix.pch";
+				INFOPLIST_FILE = "ObjCSteeringBehaviorDemo/ObjCSteeringBehaviorDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		652625BA199332A500581D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjCSteeringBehaviorDemo/ObjCSteeringBehaviorDemo-Prefix.pch";
+				INFOPLIST_FILE = "ObjCSteeringBehaviorDemo/ObjCSteeringBehaviorDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		652625BC199332A500581D80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ObjCSteeringBehaviorDemo.app/ObjCSteeringBehaviorDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjCSteeringBehaviorDemo/ObjCSteeringBehaviorDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "ObjCSteeringBehaviorDemoTests/ObjCSteeringBehaviorDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		652625BD199332A500581D80 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ObjCSteeringBehaviorDemo.app/ObjCSteeringBehaviorDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ObjCSteeringBehaviorDemo/ObjCSteeringBehaviorDemo-Prefix.pch";
+				INFOPLIST_FILE = "ObjCSteeringBehaviorDemoTests/ObjCSteeringBehaviorDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		65262577199332A400581D80 /* Build configuration list for PBXProject "ObjCSteeringBehaviorDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652625B6199332A500581D80 /* Debug */,
+				652625B7199332A500581D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		652625B8199332A500581D80 /* Build configuration list for PBXNativeTarget "ObjCSteeringBehaviorDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652625B9199332A500581D80 /* Debug */,
+				652625BA199332A500581D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		652625BB199332A500581D80 /* Build configuration list for PBXNativeTarget "ObjCSteeringBehaviorDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				652625BC199332A500581D80 /* Debug */,
+				652625BD199332A500581D80 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 65262574199332A400581D80 /* Project object */;
+}
