@@ -23,12 +23,11 @@ static const NSString *BOUNCE = @"bounce";
 //
 @synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior;
 //value initilaziation
-- (instancetype)initWithImageNamed:(NSString *)name
+- (void)initVariables
 {
     _positionV2D = [[Vector2D alloc] initWithX:0 Y:0];
     _velocityV2D = [[Vector2D alloc] initWithX:0 Y:0];
     [self draw];
-    return [self initWithImageNamed:name];
 }
 /**
  * Default graphics for vehicle. Can be overridden in subclasses.
@@ -67,6 +66,8 @@ static const NSString *BOUNCE = @"bounce";
     
     // rotate heading to match velocity
     rotation = [_velocityV2D angle] * 180 / M_PI;
+    // Manully move SKSpriteNode;
+    self.position = CGPointMake(x, y);
 }
 
 /**

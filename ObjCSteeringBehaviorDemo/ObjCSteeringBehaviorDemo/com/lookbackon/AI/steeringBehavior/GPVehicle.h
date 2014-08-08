@@ -19,4 +19,5 @@
     float y;
     float rotation;
 }
+-(void)initVariables;
 @end

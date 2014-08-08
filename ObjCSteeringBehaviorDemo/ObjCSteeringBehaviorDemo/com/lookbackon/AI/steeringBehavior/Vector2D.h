@@ -69,4 +69,7 @@
 
 -(Vector2D *)truncateV2D:(float)max;
 
+-(float)dist:(Vector2D *)other;
+-(float)distSQ:(Vector2D *)other;
+
 @end

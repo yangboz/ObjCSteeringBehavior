@@ -9,7 +9,8 @@
 #import "GPMyScene.h"
 
 @implementation GPMyScene
-GPSteeredVehicle *sprite;//SteeredVehicle;
+GPSteeredVehicle *sprite=NULL;//SteeredVehicle;
+BOOL spriteAdded = NO;
 //
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -37,23 +38,33 @@ GPSteeredVehicle *sprite;//SteeredVehicle;
         
 //        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
 //        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
-        sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
-        
+//        sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
+        sprite = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
         sprite.position = location;
-        
+        [sprite initVariables];//SteeredBehavior variables init;
+        [sprite setXScale:0.1];
+        [sprite setYScale:0.1];
 //        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         
 //        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
+        if(!spriteAdded)
+        {
+            [self addChild:sprite];
+            spriteAdded = YES;
+        }
+        Vector2D *newPosition = [[Vector2D alloc] initWithX:location.x  Y:location.y];
+        if(sprite!=NULL)
+        {
+            [sprite arrive:newPosition];
+//            [sprite update];
+        }
     }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     //ArriveTest
-    Vector2D *newPosition = [[Vector2D alloc] initWithX:10 Y:10];
-    [sprite arrive:newPosition];
+    
 }
 
 @end

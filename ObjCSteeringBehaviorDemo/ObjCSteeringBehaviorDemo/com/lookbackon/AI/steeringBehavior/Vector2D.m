@@ -281,4 +281,26 @@ static Vector2D* xy = nil;
     self.length = fmin(max, self.length);
     return self;
 }
+
+/**
+ * Calculates the distance from this vector to another given vector.
+ * @param other A Vector2D instance.
+ * @return Number The distance from this vector to the vector passed as a parameter.
+ */
+-(float)dist:(Vector2D *)other
+{
+    return sqrt([self distSQ:other]);
+}
+
+/**
+ * Calculates the distance squared from this vector to another given vector.
+ * @param other A Vector2D instance.
+ * @return Number The distance squared from this vector to the vector passed as a parameter.
+ */
+-(float)distSQ:(Vector2D *)other
+{
+    float dx = other->x - x;
+    float dy = other->y - y;
+    return dx * dx + dy * dy;
+}
 @end
