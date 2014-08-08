@@ -10,6 +10,6 @@
 
 @protocol GPIFollowPath <NSObject>
 @required
-@property(retain,nonatomic) int pathIndex;
+@property(retain,nonatomic) NSNumber *pathIndex;
 @property(retain,nonatomic) NSNumber *pathThreshold;
 @end

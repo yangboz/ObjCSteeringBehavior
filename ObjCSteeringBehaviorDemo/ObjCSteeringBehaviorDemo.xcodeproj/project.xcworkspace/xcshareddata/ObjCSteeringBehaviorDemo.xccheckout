@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>ADAAF8D5-FF36-4FD3-8249-9003BE07902C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ObjCSteeringBehaviorDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F40408FE-E340-4B54-8CAF-463EAC01135B</key>
+		<string>https://github.com/yangboz/ObjCSteeringBehavior.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ObjCSteeringBehaviorDemo/ObjCSteeringBehaviorDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F40408FE-E340-4B54-8CAF-463EAC01135B</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yangboz/ObjCSteeringBehavior.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F40408FE-E340-4B54-8CAF-463EAC01135B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F40408FE-E340-4B54-8CAF-463EAC01135B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ObjCSteeringBehavior</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -14,6 +14,9 @@
  */
 @interface GPVehicle : SKSpriteNode <GPIVehicle>
 {
-
+@public
+    float x;
+    float y;
+    float rotation;
 }
 @end

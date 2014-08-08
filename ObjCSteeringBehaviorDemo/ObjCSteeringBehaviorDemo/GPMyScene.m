@@ -35,7 +35,9 @@
         CGPoint location = [touch locationInNode:self];
         
 //        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
+//        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
+        GPSteeredVehicle *sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
+
         
         sprite.position = location;
         

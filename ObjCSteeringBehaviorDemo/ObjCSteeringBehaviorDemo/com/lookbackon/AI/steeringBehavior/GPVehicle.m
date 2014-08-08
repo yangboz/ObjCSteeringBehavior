@@ -13,13 +13,15 @@
 @implementation GPVehicle
 //@protected
 NSString *_edgeBehavior  = @"WRAP";
-float _mass = 1.0;
-float _maxSpeed;// = 10;
+NSNumber* _mass;// = 1.0;
+NSNumber* _maxSpeed;// = 10;
 Vector2D * _positionV2D;
 Vector2D * _velocityV2D;
 // potential edge behaviors
-static const NSString *WRAP;// = @"wrap";
-static const NSString *BOUNCE;// = @"bounce";
+static const NSString *WRAP = @"wrap";
+static const NSString *BOUNCE = @"bounce";
+//
+@synthesize mass,maxSpeed,velocityV2D,positionV2D;
 //value initilaziation
 - (instancetype)initWithImageNamed:(NSString *)name
 {
@@ -46,19 +48,17 @@ static const NSString *BOUNCE;// = @"bounce";
 -(void)update
 {
     // make sure velocity stays within max speed.
-    _velocityV2D.truncate(_maxSpeed);
-    
+    [_velocityV2D truncateV2D:[_maxSpeed floatValue]];
     // add velocity to position
-    _positionV2D = _positionV2D.add(_velocityV2D);
-    
+    _positionV2D = [_positionV2D add:_velocityV2D];
     // handle any edge behavior
     if(_edgeBehavior == WRAP)
     {
-        wrap();
+        [self wrap];
     }
     else if(_edgeBehavior == BOUNCE)
     {
-        bounce();
+        [self bounce];
     }
     
     // update position of sprite
@@ -66,7 +66,7 @@ static const NSString *BOUNCE;// = @"bounce";
     y = _positionV2D->y;
     
     // rotate heading to match velocity
-    rotation = _velocityV2D->angle * 180 / Math.PI;
+    rotation = [_velocityV2D angle] * 180 / M_PI;
 }
 
 /**
@@ -74,28 +74,28 @@ static const NSString *BOUNCE;// = @"bounce";
  */
 -(void)bounce
 {
-    if(stage != NULL)
+    if(YES)
     {
-        if(_positionV2D.x > stage.stageWidth)
+        if(_positionV2D->x > self.size.width)
         {
-            position.x = stage.stageWidth;
-            velocity.x *= -1;
+            _positionV2D->x = self.size.width;
+            _velocityV2D->x *= -1;
         }
-        else if(position.x < 0)
+        else if(_positionV2D->x < 0)
         {
-            position.x = 0;
-            velocity.x *= -1;
+            _positionV2D->x = 0;
+            _velocityV2D->x *= -1;
         }
         
-        if(position.y > stage.stageHeight)
+        if(_velocityV2D->y > self.size.height)
         {
-            position.y = stage.stageHeight;
-            velocity.y *= -1;
+            _positionV2D->y = self.size.height;
+            _velocityV2D->y *= -1;
         }
-        else if(position.y < 0)
+        else if(_velocityV2D->y < 0)
         {
-            position.y = 0;
-            velocity.y *= -1;
+            _positionV2D->y = 0;
+            _velocityV2D->y *= -1;
         }
     }
 }
@@ -105,12 +105,12 @@ static const NSString *BOUNCE;// = @"bounce";
  */
 -(void)wrap
 {
-    if(stage != null)
+    if(YES)//stage != NULL
     {
-        if(position.x > stage.stageWidth) position.x = 0;
-        if(position.x < 0) position.x = stage.stageWidth;
-        if(position.y > stage.stageHeight) position.y = 0;
-        if(position.y < 0) position.y = stage.stageHeight;
+        if(_positionV2D->x > self.size.width) _positionV2D->x = 0;
+        if(_positionV2D->x < 0) _positionV2D->x = self.size.width;
+        if(_positionV2D->y > self.size.height) _positionV2D->y = 0;
+        if(_positionV2D->y < 0) _positionV2D->y = self.size.height;
     }
 }
 
@@ -121,7 +121,7 @@ static const NSString *BOUNCE;// = @"bounce";
 {
     _edgeBehavior = value;
 }
--(NSString )getEdgeBehavior
+-(NSString *)getEdgeBehavior
 {
     return _edgeBehavior;
 }
@@ -129,11 +129,11 @@ static const NSString *BOUNCE;// = @"bounce";
 /**
  * Sets / gets mass of character.
  */
--(void)setMass:(NSNumber *)value
+-(void)setMass:(NSNumber*)value
 {
     _mass = value;
 }
--(NSNumber *)getMass
+-(NSNumber*)getMass
 {
     return _mass;
 }
@@ -141,11 +141,11 @@ static const NSString *BOUNCE;// = @"bounce";
 /**
  * Sets / gets maximum speed of character.
  */
--(void)setMaxSpeed:(NSNumber *)valuevoid
+-(void)setMaxSpeed:(NSNumber*)value
 {
     _maxSpeed = value;
 }
--(NSNumber *)getMaxSpeed
+-(NSNumber*)getMaxSpeed
 {
     return _maxSpeed;
 }
@@ -155,13 +155,13 @@ static const NSString *BOUNCE;// = @"bounce";
  */
 -(void)setPositionV2D:(Vector2D *)value
 {
-    _position = value;
-    x = _position.x;
-    y = _position.y;
+    _positionV2D = value;
+    x = _positionV2D->x;
+    y = _positionV2D->y;
 }
 -(Vector2D *)getPosition
 {
-    return _position;
+    return _positionV2D;
 }
 
 /**
@@ -169,28 +169,28 @@ static const NSString *BOUNCE;// = @"bounce";
  */
 -(void)setVelocity:(Vector2D *)value
 {
-    _velocity = value;
+    _velocityV2D = value;
 }
 -(Vector2D *)getVelocity
 {
-    return _velocity;
+    return _velocityV2D;
 }
 
 /**
  * Sets x position of character. Overrides Sprite.x to set internal Vector2D position as well.
  */
--(void)setX:(NSNumber *)value
+-(void)setX:(float)value
 {
-    super.x = value;
-    _position.x = x;
+    x = value;
+    _positionV2D->x = x;
 }
 
 /**
  * Sets y position of character. Overrides Sprite.y to set internal Vector2D position as well.
  */
--(void)setY:(NSNumber *)value
+-(void)setY:(float)value
 {
-    super.y = value;
-    _position.y = y;
+    y = value;
+    _positionV2D->y = y;
 }
 @end

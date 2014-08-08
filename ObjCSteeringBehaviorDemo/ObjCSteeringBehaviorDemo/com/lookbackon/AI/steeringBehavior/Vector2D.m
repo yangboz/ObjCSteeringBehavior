@@ -146,10 +146,15 @@ static Vector2D* xy = nil;
 {
     return [NSString stringWithFormat:@"<%f, %f>", x, y];
 }
-
+- (void) setLength:(float)value
+{
+    float a = self.angle;
+    x = cos(a) * value;
+    y = sin(a) * value;
+}
 - (float) length
 {
-    return sqrt(x*x + y*y);
+    return sqrt(self.lengthSquared);
 }
 
 - (float) lengthSquared
@@ -253,4 +258,27 @@ static Vector2D* xy = nil;
     return (x*other->y - y*other->x);
 }
 
+/**
+ * Gets / sets the angle of this vector. Changing the angle changes the x and y but retains the same length.
+ */
+-(void)setAngle:(float)value
+{
+    float len = self.length;
+    x = cos(value) * len;
+    y = sin(value) * len;
+}
+-(float)angle
+{
+    return atan2(y, x);
+}
+/**
+ * Ensures the length of the vector is no longer than the given value.
+ * @param max The maximum value this vector should be. If length is larger than max, it will be truncated to this value.
+ * @return Vector2D A reference to this vector.
+ */
+-(Vector2D *)truncateV2D:(float)max
+{
+    self.length = fmin(max, self.length);
+    return self;
+}
 @end

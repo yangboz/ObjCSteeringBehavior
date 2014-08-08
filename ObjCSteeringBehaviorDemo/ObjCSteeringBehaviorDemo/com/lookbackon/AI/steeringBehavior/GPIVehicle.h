@@ -17,11 +17,11 @@
 /**
  * Sets / gets mass of character.
  */
-@property(retain,nonatomic) NSNumber *mass;
+@property(retain,nonatomic) NSNumber* mass;
 /**
  * Sets / gets maximum speed of character.
  */
-@property(retain,nonatomic) NSNumber *maxSpeed;
+@property(retain,nonatomic) NSNumber* maxSpeed;
 /**
  * Sets / gets position of character as a Vector2D.
  */
@@ -29,15 +29,15 @@
 /**
  * Sets / gets velocity of character as a Vector2D.
  */
-@property(retain,nonatomic) Vector2D *velocity;
+@property(retain,nonatomic) Vector2D *velocityV2D;
 /**
  * Sets x position of character. Overrides Sprite.x to set internal Vector2D position as well.
  */
-@property(retain,nonatomic) NSNumber *x;
+//@property(retain,nonatomic) float x;
 /**
  * Sets y position of character. Overrides Sprite.y to set internal Vector2D position as well.
  */
-@property(retain,nonatomic) NSNumber *y;
+//@property(retain,nonatomic) float y;
 /**
  * update vehicle 's properties.
  */

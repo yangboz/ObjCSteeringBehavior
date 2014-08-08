@@ -8,11 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol GPISteeredVehicle <NSObject,GPIVehicle,GPIArrive,GPIAvoid,GPIEvade,GPIFlee,GPIFllowPath,GPIFlock,GPIFlock,GPIPursue,GPISeek,GPIWander>
+#import "GPIVehicle.h"
+#import "GPIArrive.h"
+#import "GPIAvoid.h"
+#import "GPIEvade.h"
+#import "GPIFlee.h"
+#import "GPIFollowPath.h"
+#import "GPIFlock.h"
+#import "GPIFollowPath.h"
+#import "GPIPursue.h"
+#import "GPISeek.h"
+#import "GPIWander.h"
+
+@protocol GPISteeredVehicle <GPIArrive,GPIAvoid,GPIEvade,GPIFlee,GPIFollowPath,GPIFlock,GPIFlock,GPIPursue,GPISeek,GPIWander>
+
 @required
-@property(retain,nonatomic) NSNumber *maxForce;
-@property(retain,nonatomic) NSNumber *inSightDist;
-@property(retain,nonatomic) NSNumber *tooCloseDist;
--(BOOL)inSight:(GPVehicle *);
--(BOOL)tooClose:(GPVehicle *);
+-(BOOL)inSight:(GPVehicle *)vehicle;
+-(BOOL)tooClose:(GPVehicle *)vehicle;
+
+
 @end

@@ -29,8 +29,8 @@
 		652625D3199337D900581D80 /* Vector2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625D1199337D900581D80 /* Vector2D.m */; };
 		652625E1199460FA00581D80 /* GPVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625E0199460FA00581D80 /* GPVehicle.m */; };
 		652625E2199460FA00581D80 /* GPVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625E0199460FA00581D80 /* GPVehicle.m */; };
-		652625E519946E9500581D80 /* GPVector2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625E419946E9500581D80 /* GPVector2D.m */; };
-		652625E619946E9500581D80 /* GPVector2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 652625E419946E9500581D80 /* GPVector2D.m */; };
+		65B8884D19949E4100738F25 /* GPSteeredVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B8884C19949E4100738F25 /* GPSteeredVehicle.m */; };
+		65B8884E19949E4100738F25 /* GPSteeredVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = 65B8884C19949E4100738F25 /* GPSteeredVehicle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,8 +83,8 @@
 		652625DE19945E4600581D80 /* GPISteeredVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPISteeredVehicle.h; sourceTree = "<group>"; };
 		652625DF199460FA00581D80 /* GPVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPVehicle.h; sourceTree = "<group>"; };
 		652625E0199460FA00581D80 /* GPVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPVehicle.m; sourceTree = "<group>"; };
-		652625E319946E9500581D80 /* GPVector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPVector2D.h; sourceTree = "<group>"; };
-		652625E419946E9500581D80 /* GPVector2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPVector2D.m; sourceTree = "<group>"; };
+		65B8884B19949E4100738F25 /* GPSteeredVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSteeredVehicle.h; sourceTree = "<group>"; };
+		65B8884C19949E4100738F25 /* GPSteeredVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSteeredVehicle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,11 +230,11 @@
 				652625DB19933C1B00581D80 /* GPIPursue.h */,
 				652625DC19933C4B00581D80 /* GPISeek.h */,
 				652625DD19933C7700581D80 /* GPIWander.h */,
-				652625DE19945E4600581D80 /* GPISteeredVehicle.h */,
 				652625DF199460FA00581D80 /* GPVehicle.h */,
 				652625E0199460FA00581D80 /* GPVehicle.m */,
-				652625E319946E9500581D80 /* GPVector2D.h */,
-				652625E419946E9500581D80 /* GPVector2D.m */,
+				652625DE19945E4600581D80 /* GPISteeredVehicle.h */,
+				65B8884B19949E4100738F25 /* GPSteeredVehicle.h */,
+				65B8884C19949E4100738F25 /* GPSteeredVehicle.m */,
 			);
 			path = steeringBehavior;
 			sourceTree = "<group>";
@@ -339,9 +339,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65B8884D19949E4100738F25 /* GPSteeredVehicle.m in Sources */,
 				6526258E199332A500581D80 /* main.m in Sources */,
 				652625E1199460FA00581D80 /* GPVehicle.m in Sources */,
-				652625E519946E9500581D80 /* GPVector2D.m in Sources */,
 				6526259E199332A500581D80 /* GPMyScene.m in Sources */,
 				652625D2199337D900581D80 /* Vector2D.m in Sources */,
 				6526259B199332A500581D80 /* GPViewController.m in Sources */,
@@ -355,8 +355,8 @@
 			files = (
 				652625D3199337D900581D80 /* Vector2D.m in Sources */,
 				652625E2199460FA00581D80 /* GPVehicle.m in Sources */,
+				65B8884E19949E4100738F25 /* GPSteeredVehicle.m in Sources */,
 				652625B5199332A500581D80 /* ObjCSteeringBehaviorDemoTests.m in Sources */,
-				652625E619946E9500581D80 /* GPVector2D.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +567,7 @@
 				652625BA199332A500581D80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		652625BB199332A500581D80 /* Build configuration list for PBXNativeTarget "ObjCSteeringBehaviorDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -575,6 +576,7 @@
 				652625BD199332A500581D80 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

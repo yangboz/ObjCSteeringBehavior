@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+//#import <stdlib.h>
+#import <math.h>
+
 @interface GPVector2D : NSObject
 
 @end
