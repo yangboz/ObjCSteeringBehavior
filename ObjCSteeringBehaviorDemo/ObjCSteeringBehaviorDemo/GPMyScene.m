@@ -9,7 +9,8 @@
 #import "GPMyScene.h"
 
 @implementation GPMyScene
-
+GPSteeredVehicle *sprite;//SteeredVehicle;
+//
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
@@ -36,14 +37,13 @@
         
 //        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
 //        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
-        GPSteeredVehicle *sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
-
+        sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
         
         sprite.position = location;
         
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         
-        [sprite runAction:[SKAction repeatActionForever:action]];
+//        [sprite runAction:[SKAction repeatActionForever:action]];
         
         [self addChild:sprite];
     }
@@ -51,6 +51,9 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    //ArriveTest
+    Vector2D *newPosition = [[Vector2D alloc] initWithX:10 Y:10];
+    [sprite arrive:newPosition];
 }
 
 @end

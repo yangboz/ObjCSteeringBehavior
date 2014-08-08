@@ -21,7 +21,7 @@ Vector2D * _velocityV2D;
 static const NSString *WRAP = @"wrap";
 static const NSString *BOUNCE = @"bounce";
 //
-@synthesize mass,maxSpeed,velocityV2D,positionV2D;
+@synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior;
 //value initilaziation
 - (instancetype)initWithImageNamed:(NSString *)name
 {

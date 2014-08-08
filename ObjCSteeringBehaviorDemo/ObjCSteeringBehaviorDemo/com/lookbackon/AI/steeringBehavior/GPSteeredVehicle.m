@@ -9,7 +9,8 @@
 #import "GPSteeredVehicle.h"
 
 @implementation GPSteeredVehicle
-
+//
+@synthesize arriveThreshold,avoidDistance,avoidBuffer,pathThreshold,pathIndex;
 //value initilaziation
 - (instancetype)initWithImageNamed:(NSString *)name
 {
@@ -51,5 +52,13 @@
 -(void)flock:(NSArray*)circles
 {
     
+}
+-(BOOL)inSight:(GPVehicle *)vehicle
+{
+    return NO;
+}
+-(BOOL)tooClose:(GPVehicle *)vehicle
+{
+    return NO;
 }
 @end
