@@ -11,6 +11,7 @@
 @implementation GPMyScene
 GPSteeredVehicle *sprite=NULL;//SteeredVehicle;
 BOOL spriteAdded = NO;
+CGSize winSize;
 //
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -26,6 +27,8 @@ BOOL spriteAdded = NO;
                                        CGRectGetMidY(self.frame));
         
         [self addChild:myLabel];
+        //
+        winSize = size;
     }
     return self;
 }
@@ -64,7 +67,14 @@ BOOL spriteAdded = NO;
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     //ArriveTest
-    
+    CGFloat rX = 0 + arc4random_uniform(winSize.width - 0 + 1);
+    CGFloat rY = 0 + arc4random_uniform(winSize.height - 0 + 1);
+    CGPoint random = CGPointMake(rX, rY);
+    //
+    if(sprite!=NULL)
+    {
+        sprite.position = random;
+    }
 }
 
 @end
