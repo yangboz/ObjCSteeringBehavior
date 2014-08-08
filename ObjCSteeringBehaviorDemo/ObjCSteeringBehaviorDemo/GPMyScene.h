@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "com/lookbackon/AI/steeringBehavior/GPVehicle.h"
 
 @interface GPMyScene : SKScene
 

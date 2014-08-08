@@ -34,7 +34,8 @@
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
         
         sprite.position = location;
         

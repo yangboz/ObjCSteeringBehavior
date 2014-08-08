@@ -25,7 +25,7 @@
 /**
  * Sets / gets position of character as a Vector2D.
  */
-@property(retain,nonatomic) Vector2D *position;
+@property(retain,nonatomic) Vector2D *positionV2D;
 /**
  * Sets / gets velocity of character as a Vector2D.
  */
