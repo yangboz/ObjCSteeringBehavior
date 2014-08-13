@@ -9,9 +9,11 @@
 #import "GPMyScene.h"
 
 @implementation GPMyScene
-GPSteeredVehicle *sprite=NULL;//SteeredVehicle;
+GPSteeredVehicle *vehicle=NULL;//SteeredVehicle;
 CGSize winSize;
 Vector2D *newPosition;
+//
+@synthesize selectedBehavior;
 //
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -21,43 +23,40 @@ Vector2D *newPosition;
         
         SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         
-        myLabel.text = @"Steered Behaviors!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
+        myLabel.text = @"Steered Behaviors:";
+        myLabel.fontSize = 20;
+        myLabel.position = CGPointMake(CGRectGetMinX(self.frame)+110,CGRectGetMaxY(self.frame)-55);
         
         [self addChild:myLabel];
         //
         winSize = size;
         //
-        //        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        //        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
-        //        sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
-        sprite = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
-        sprite.position = CGPointMake(0, 0);
-        [sprite initVariables];//SteeredBehavior variables init;
-        [sprite setXScale:0.1];
-        [sprite setYScale:0.1];
-        [sprite velocityV2D].length = 5;
-        [sprite velocityV2D].angle = kPI / 4;
+        //        SKSpriteNode *vehicle = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        //        GPVehicle *vehicle = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
+        //        vehicle = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
+        vehicle = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+        vehicle.position = CGPointMake(0, 0);
+        [vehicle initVariables];//SteeredBehavior variables init;
+        [vehicle setXScale:0.1];
+        [vehicle setYScale:0.1];
+        [vehicle velocityV2D].length = 5;
+        [vehicle velocityV2D].angle = kPI / 4;
         //        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         
         //        [sprite runAction:[SKAction repeatActionForever:action]];
-        sprite.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
-        sprite.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
-        [self addChild:sprite];
+        vehicle.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
+        vehicle.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
+        [self addChild:vehicle];
     }
     return self;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
         //
         newPosition = [[Vector2D alloc] initWithX:location.x  Y:location.y];
-        
     }
 }
 
@@ -68,18 +67,42 @@ Vector2D *newPosition;
     CGFloat rX = 0 + arc4random_uniform(winSize.width - 0 + 1);
     CGFloat rY = 0 + arc4random_uniform(winSize.height - 0 + 1);
     CGPoint random = CGPointMake(rX, rY);
-    //
-    if(sprite!=NULL)
-    {
-        sprite.position = random;
-    }
      */
     if(newPosition!=NULL)
     {
-//        sprite.position = CGPointMake(newPosition->x,newPosition->y);
-//        [sprite arrive:newPosition];
-        [sprite wander];
-        [sprite update];
+//        vehicle.position = random;
+//        vehicle.position = CGPointMake(newPosition->x,newPosition->y);
+        if ([selectedBehavior isEqualToString:@"Arrive"]) {
+            [vehicle arrive:newPosition];
+        }else if([selectedBehavior isEqualToString:@"Avoid"])
+        {
+//            [vehicle avoid:<#(NSArray *)#>
+        }else if([selectedBehavior isEqualToString:@"Evade"])
+        {
+//            [vehicle evade:<#(GPVehicle *)#>
+        }else if([selectedBehavior isEqualToString:@"Flee"])
+        {
+//            [vehicle flee:<#(Vector2D *)#>
+        }else if([selectedBehavior isEqualToString:@"FollowPath"])
+        {
+//            [vehicle f
+        }else if([selectedBehavior isEqualToString:@"Flock"])
+        {
+//            [vehicle flock:<#(NSArray *)#>
+        }else if([selectedBehavior isEqualToString:@"Pursue"])
+        {
+//            [vehicle pursue:<#(GPVehicle *)#>
+        }else if([selectedBehavior isEqualToString:@"Seek"])
+        {
+//            [vehicle seek:<#(Vector2D *)#>
+        }else if([selectedBehavior isEqualToString:@"Wander"])
+        {
+            [vehicle wander];
+        }else
+        {
+            //Unknow behaviors.
+        }
+        [vehicle update];
     }
 }
 

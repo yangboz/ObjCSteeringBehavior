@@ -10,6 +10,10 @@
 #import "GPMyScene.h"
 
 @implementation GPViewController
+//
+GPMyScene *scene;
+//
+@synthesize behaviorsPickerView;
 
 - (void)viewDidLoad
 {
@@ -21,11 +25,16 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [GPMyScene sceneWithSize:skView.bounds.size];
+    scene = [GPMyScene sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
     [skView presentScene:scene];
+    //UIKit
+    steeringBehaviours = [[NSArray alloc] initWithObjects:@"Arrive",@"Avoid",@"Evade",@"Flee",@"FollowPath",@"Flock",@"Pursue",@"Seek",@"Wander",nil];
+    //Connect data
+    self.behaviorsPickerView.dataSource = self;
+    self.behaviorsPickerView.delegate = self;
 }
 
 - (BOOL)shouldAutorotate
@@ -48,4 +57,27 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark -UIPickerView
+// The number of columns of data
+- ( int ) numberOfComponentsInPickerView : ( UIPickerView * ) pickerView
+{
+    return 1 ;
+}
+// The number of rows of data
+- ( int ) pickerView : ( UIPickerView * ) pickerView numberOfRowsInComponent : ( NSInteger ) component
+{
+    return steeringBehaviours.count;
+}
+// The data to return for the row and component (column) that's being passed in
+- ( NSString * ) pickerView : ( UIPickerView * ) pickerView titleForRow : ( NSInteger ) row forComponent : ( NSInteger ) component
+{
+    return [steeringBehaviours objectAtIndex:row];
+}
+- ( void ) pickerView : ( UIPickerView * ) pickerView didSelectRow : ( NSInteger ) row inComponent : ( NSInteger ) component
+{
+    // This method is triggered whenever the user makes a change to the picker selection.
+    
+    // The parameter named row and component represents what was selected.
+    scene.selectedBehavior = [steeringBehaviours objectAtIndex:row];
+}
 @end

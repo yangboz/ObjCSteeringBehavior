@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-@interface GPViewController : UIViewController
-
+@interface GPViewController : UIViewController <UIPickerViewDataSource,UIPickerViewDelegate>
+{
+    NSArray *steeringBehaviours;
+}
+@property(retain,nonatomic)IBOutlet UIPickerView *behaviorsPickerView;
 @end
