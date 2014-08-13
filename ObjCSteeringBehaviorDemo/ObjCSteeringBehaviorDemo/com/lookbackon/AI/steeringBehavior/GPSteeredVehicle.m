@@ -54,7 +54,7 @@
     [desiredVelocity normalize];
     //
     float dist = [self.positionV2D dist:target];
-    NSLog(@"dist:%f",dist);
+    
     if(dist > [arrivalThreshold floatValue])
     {
         desiredVelocity = [desiredVelocity mult:[self.maxSpeed floatValue]];
@@ -63,10 +63,10 @@
     {
         desiredVelocity = [desiredVelocity mult:[self.maxSpeed floatValue] * dist/[arrivalThreshold floatValue]];
     }
-    NSLog(@"desiredVelocity:%@",desiredVelocity);
     Vector2D *force = [desiredVelocity sub:self.velocityV2D];
     steeringForce = [steeringForce add:force];
-    NSLog(@"SteeredVehicle arrive:%@,force:%@",target,steeringForce);
+    //
+    NSLog(@"SteeredVehicle arrive:%@,force:%@,dist:%f,desiredVelocity:%@",target,steeringForce,dist,desiredVelocity);
 }
 -(void)pursue:(Vector2D*)target
 {
@@ -102,9 +102,9 @@
 -(void)update
 {
     [steeringForce truncateV2D:[maxForce floatValue]];
-    self->steeringForce = [Vector2D div:self->steeringForce with:[self.mass floatValue]];
+    self->steeringForce = [self->steeringForce div:[self.mass floatValue]];
     self.velocityV2D = [self.velocityV2D add:steeringForce];
-    NSLog(@"mass:%f,force:%@,velocityV2D:%@",[self.mass floatValue],self->steeringForce,self.velocityV2D);
+//    NSLog(@"mass:%f,force:%@,velocityV2D:%@",[self.mass floatValue],self->steeringForce,self.velocityV2D);
     //Reset
     steeringForce = [[Vector2D alloc] initWithX:0.0 Y:0.0];
     [super update];

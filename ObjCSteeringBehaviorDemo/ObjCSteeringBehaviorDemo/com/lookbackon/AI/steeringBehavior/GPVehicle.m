@@ -51,14 +51,14 @@
     // add velocity to position
     positionV2D = [positionV2D add:velocityV2D];
     // handle any edge behavior
-    if([edgeBehavior isEqual:@"wrap"])
-    {
-        [self wrap];
-    }
-    else if([edgeBehavior isEqual:@"bounce"] )
-    {
-        [self bounce];
-    }
+//    if([edgeBehavior isEqual:@"wrap"])
+//    {
+//        [self wrap];
+//    }
+//    else if([edgeBehavior isEqual:@"bounce"] )
+//    {
+//        [self bounce];
+//    }
     
     // update position of sprite
     x = [[NSNumber alloc] initWithFloat: positionV2D->x];
@@ -68,7 +68,7 @@
     rotation = [velocityV2D angle] * 180 / M_PI;
     // Manully move SKSpriteNode;
     self.position = CGPointMake([x floatValue], [y floatValue]);
-    NSLog(@"Update position:<%f,%f>,velocity:%@",self.position.x,self.position.y,velocityV2D);
+    NSLog(@"Updated position:<%f,%f>,velocity:%@,positionV2D:%@",self.position.x,self.position.y,velocityV2D,positionV2D);
 }
 
 /**
