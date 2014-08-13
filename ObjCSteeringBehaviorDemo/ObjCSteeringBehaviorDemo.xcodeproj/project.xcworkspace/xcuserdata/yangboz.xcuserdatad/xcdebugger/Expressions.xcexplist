@@ -3,15 +3,26 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[GPVehicle wrap]:GPVehicle.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[GPMyScene touchesBegan:withEvent:]:GPMyScene.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sprite">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[GPSteeredVehicle arrive:]:GPSteeredVehicle.m">
       </ContextState>
       <ContextState
          contextName = "-[GPVehicle update]:GPVehicle.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "maxSpeed">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

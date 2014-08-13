@@ -15,8 +15,8 @@
 @interface GPVehicle : SKSpriteNode <GPIVehicle>
 {
 @public
-    float x;
-    float y;
+    NSNumber * x;
+    NSNumber * y;
     float rotation;
 }
 -(void)initVariables;

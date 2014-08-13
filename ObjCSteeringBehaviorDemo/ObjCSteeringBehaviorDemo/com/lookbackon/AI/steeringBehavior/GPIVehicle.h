@@ -33,11 +33,11 @@
 /**
  * Sets x position of character. Overrides Sprite.x to set internal Vector2D position as well.
  */
-//@property(retain,nonatomic) float x;
+@property(retain,nonatomic) NSNumber* x;
 /**
  * Sets y position of character. Overrides Sprite.y to set internal Vector2D position as well.
  */
-//@property(retain,nonatomic) float y;
+@property(retain,nonatomic) NSNumber* y;
 /**
  * update vehicle 's properties.
  */

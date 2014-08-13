@@ -10,8 +10,8 @@
 
 @implementation GPMyScene
 GPSteeredVehicle *sprite=NULL;//SteeredVehicle;
-BOOL spriteAdded = NO;
 CGSize winSize;
+Vector2D *newPosition;
 //
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
@@ -21,7 +21,7 @@ CGSize winSize;
         
         SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         
-        myLabel.text = @"Hello, World!";
+        myLabel.text = @"Steered Behaviors!";
         myLabel.fontSize = 30;
         myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
                                        CGRectGetMidY(self.frame));
@@ -29,6 +29,21 @@ CGSize winSize;
         [self addChild:myLabel];
         //
         winSize = size;
+        //
+        //        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        //        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
+        //        sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
+        sprite = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+        sprite.position = CGPointMake(winSize.width/2, winSize.height/2);
+        [sprite initVariables];//SteeredBehavior variables init;
+        [sprite setXScale:0.1];
+        [sprite setYScale:0.1];
+        [sprite velocityV2D].length = 5;
+        [sprite velocityV2D].angle = kPI / 4;
+        //        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+        
+        //        [sprite runAction:[SKAction repeatActionForever:action]];
+        [self addChild:sprite];
     }
     return self;
 }
@@ -38,35 +53,16 @@ CGSize winSize;
     
     for (UITouch *touch in touches) {
         CGPoint location = [touch locationInNode:self];
+        //
+        newPosition = [[Vector2D alloc] initWithX:location.x  Y:location.y];
         
-//        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-//        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
-//        sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
-        sprite = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
-        sprite.position = location;
-        [sprite initVariables];//SteeredBehavior variables init;
-        [sprite setXScale:0.1];
-        [sprite setYScale:0.1];
-//        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-//        [sprite runAction:[SKAction repeatActionForever:action]];
-        if(!spriteAdded)
-        {
-            [self addChild:sprite];
-            spriteAdded = YES;
-        }
-        Vector2D *newPosition = [[Vector2D alloc] initWithX:location.x  Y:location.y];
-        if(sprite!=NULL)
-        {
-            [sprite arrive:newPosition];
-//            [sprite update];
-        }
     }
 }
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     //ArriveTest
+    /*
     CGFloat rX = 0 + arc4random_uniform(winSize.width - 0 + 1);
     CGFloat rY = 0 + arc4random_uniform(winSize.height - 0 + 1);
     CGPoint random = CGPointMake(rX, rY);
@@ -74,6 +70,13 @@ CGSize winSize;
     if(sprite!=NULL)
     {
         sprite.position = random;
+    }
+     */
+    if(newPosition!=NULL)
+    {
+        sprite.position = CGPointMake(newPosition->x,newPosition->y);
+//        [sprite arrive:newPosition];
+//        [sprite update];
     }
 }
 

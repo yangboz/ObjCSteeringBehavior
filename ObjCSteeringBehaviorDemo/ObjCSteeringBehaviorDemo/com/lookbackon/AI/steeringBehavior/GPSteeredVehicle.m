@@ -11,7 +11,7 @@
 @implementation GPSteeredVehicle
 //
 @synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior;
-@synthesize arriveThreshold,avoidDistance,avoidBuffer,pathThreshold,pathIndex;
+@synthesize arrivalThreshold,avoidDistance,avoidBuffer,pathThreshold,pathIndex;
 //value initilaziation
 - (void)initVariables
 {
@@ -32,6 +32,10 @@
     avoidBuffer = [[NSNumber alloc] initWithFloat:20.0];
     inSightDist = [[NSNumber alloc] initWithFloat:200.0];
     tooCloseDist = [[NSNumber alloc] initWithFloat:60.0];
+    //
+    mass = [[NSNumber alloc] initWithFloat:1.0];
+    maxSpeed  = [[NSNumber alloc] initWithFloat:10.0];
+    edgeBehavior = [[NSString alloc] initWithString:@"wrap"];
     //
     [super initVariables];
 }
@@ -57,11 +61,12 @@
     }
     else
     {
-        desiredVelocity = [desiredVelocity mult:[maxSpeed floatValue] * dist/[arriveThreshold floatValue]];
+        desiredVelocity = [desiredVelocity mult:[maxSpeed floatValue] * dist/[arrivalThreshold floatValue]];
     }
     
     Vector2D *force = [desiredVelocity sub:velocityV2D];
     steeringForce = [steeringForce add:force];
+    NSLog(@"SteeredVehicle arrive:(%f,%f)",target->x,target->y);
 }
 -(void)pursue:(Vector2D*)target
 {

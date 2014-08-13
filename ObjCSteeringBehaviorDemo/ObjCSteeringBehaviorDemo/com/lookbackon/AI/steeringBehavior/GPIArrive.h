@@ -10,6 +10,6 @@
 
 @protocol GPIArrive <NSObject>
 @required
-    @property(retain,nonatomic) NSNumber *arriveThreshold;
+    @property(retain,nonatomic) NSNumber *arrivalThreshold;
     -(void)arrive:(Vector2D*)target;
 @end

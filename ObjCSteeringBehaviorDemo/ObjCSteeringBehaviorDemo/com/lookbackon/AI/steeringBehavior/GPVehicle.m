@@ -12,21 +12,21 @@
 
 @implementation GPVehicle
 //@protected
-NSString *_edgeBehavior  = @"WRAP";
-NSNumber* _mass;// = 1.0;
-NSNumber* _maxSpeed;// = 10;
-Vector2D * _positionV2D;
-Vector2D * _velocityV2D;
+//NSString *_edgeBehavior  = @"wrap";
+//NSNumber* _mass;// = 1.0;
+//NSNumber* _maxSpeed;// = 10;
+//Vector2D * _positionV2D;
+//Vector2D * _velocityV2D;
 // potential edge behaviors
-static const NSString *WRAP = @"wrap";
-static const NSString *BOUNCE = @"bounce";
+#define WRAP @"wrap";
+#define BOUNCE @"bounce";
 //
 @synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior;
 //value initilaziation
 - (void)initVariables
 {
-    _positionV2D = [[Vector2D alloc] initWithX:0 Y:0];
-    _velocityV2D = [[Vector2D alloc] initWithX:0 Y:0];
+    positionV2D = [[Vector2D alloc] initWithX:0 Y:0];
+    velocityV2D = [[Vector2D alloc] initWithX:0 Y:0];
     [self draw];
 }
 /**
@@ -47,27 +47,28 @@ static const NSString *BOUNCE = @"bounce";
 -(void)update
 {
     // make sure velocity stays within max speed.
-    [_velocityV2D truncateV2D:[_maxSpeed floatValue]];
+    [velocityV2D truncateV2D:[maxSpeed floatValue]];
     // add velocity to position
-    _positionV2D = [_positionV2D add:_velocityV2D];
+    positionV2D = [positionV2D add:velocityV2D];
     // handle any edge behavior
-    if(_edgeBehavior == WRAP)
+    if([edgeBehavior isEqual:@"wrap"])
     {
         [self wrap];
     }
-    else if(_edgeBehavior == BOUNCE)
+    else if([edgeBehavior isEqual:@"bounce"] )
     {
         [self bounce];
     }
     
     // update position of sprite
-    x = _positionV2D->x;
-    y = _positionV2D->y;
+    x = [[NSNumber alloc] initWithFloat: positionV2D->x];
+    y = [[NSNumber alloc] initWithFloat:positionV2D->y];
     
     // rotate heading to match velocity
-    rotation = [_velocityV2D angle] * 180 / M_PI;
+    rotation = [velocityV2D angle] * 180 / M_PI;
     // Manully move SKSpriteNode;
-    self.position = CGPointMake(x, y);
+    self.position = CGPointMake([x floatValue], [y floatValue]);
+    NSLog(@"Update position:%f,%f",self.position.x,self.position.y);
 }
 
 /**
@@ -77,26 +78,26 @@ static const NSString *BOUNCE = @"bounce";
 {
     if(YES)
     {
-        if(_positionV2D->x > self.size.width)
+        if(positionV2D->x > self.size.width)
         {
-            _positionV2D->x = self.size.width;
-            _velocityV2D->x *= -1;
+            positionV2D->x = self.size.width;
+            velocityV2D->x *= -1;
         }
-        else if(_positionV2D->x < 0)
+        else if(positionV2D->x < 0)
         {
-            _positionV2D->x = 0;
-            _velocityV2D->x *= -1;
+            positionV2D->x = 0;
+            velocityV2D->x *= -1;
         }
         
-        if(_velocityV2D->y > self.size.height)
+        if(velocityV2D->y > self.size.height)
         {
-            _positionV2D->y = self.size.height;
-            _velocityV2D->y *= -1;
+            positionV2D->y = self.size.height;
+            velocityV2D->y *= -1;
         }
-        else if(_velocityV2D->y < 0)
+        else if(velocityV2D->y < 0)
         {
-            _positionV2D->y = 0;
-            _velocityV2D->y *= -1;
+            positionV2D->y = 0;
+            velocityV2D->y *= -1;
         }
     }
 }
@@ -108,10 +109,10 @@ static const NSString *BOUNCE = @"bounce";
 {
     if(YES)//stage != NULL
     {
-        if(_positionV2D->x > self.size.width) _positionV2D->x = 0;
-        if(_positionV2D->x < 0) _positionV2D->x = self.size.width;
-        if(_positionV2D->y > self.size.height) _positionV2D->y = 0;
-        if(_positionV2D->y < 0) _positionV2D->y = self.size.height;
+        if(positionV2D->x > self.size.width) positionV2D->x = 0;
+        if(positionV2D->x < 0) positionV2D->x = self.size.width;
+        if(positionV2D->y > self.size.height) positionV2D->y = 0;
+        if(positionV2D->y < 0) positionV2D->y = self.size.height;
     }
 }
 
@@ -120,11 +121,11 @@ static const NSString *BOUNCE = @"bounce";
  */
 -(void)setEdgeBehavior:(NSString *)value
 {
-    _edgeBehavior = value;
+    edgeBehavior = value;
 }
 -(NSString *)getEdgeBehavior
 {
-    return _edgeBehavior;
+    return edgeBehavior;
 }
 
 /**
@@ -132,11 +133,11 @@ static const NSString *BOUNCE = @"bounce";
  */
 -(void)setMass:(NSNumber*)value
 {
-    _mass = value;
+    mass = value;
 }
 -(NSNumber*)getMass
 {
-    return _mass;
+    return mass;
 }
 
 /**
@@ -144,11 +145,11 @@ static const NSString *BOUNCE = @"bounce";
  */
 -(void)setMaxSpeed:(NSNumber*)value
 {
-    _maxSpeed = value;
+    maxSpeed = value;
 }
 -(NSNumber*)getMaxSpeed
 {
-    return _maxSpeed;
+    return maxSpeed;
 }
 
 /**
@@ -156,13 +157,13 @@ static const NSString *BOUNCE = @"bounce";
  */
 -(void)setPositionV2D:(Vector2D *)value
 {
-    _positionV2D = value;
-    x = _positionV2D->x;
-    y = _positionV2D->y;
+    positionV2D = value;
+    x = [[NSNumber alloc] initWithFloat:positionV2D->x];
+    y = [[NSNumber alloc] initWithFloat:positionV2D->y];
 }
 -(Vector2D *)getPosition
 {
-    return _positionV2D;
+    return positionV2D;
 }
 
 /**
@@ -170,28 +171,35 @@ static const NSString *BOUNCE = @"bounce";
  */
 -(void)setVelocity:(Vector2D *)value
 {
-    _velocityV2D = value;
+    velocityV2D = value;
 }
 -(Vector2D *)getVelocity
 {
-    return _velocityV2D;
+    return velocityV2D;
 }
 
 /**
  * Sets x position of character. Overrides Sprite.x to set internal Vector2D position as well.
  */
--(void)setX:(float)value
+-(void)setX:(NSNumber *)value
 {
     x = value;
-    _positionV2D->x = x;
+    positionV2D->x = [x floatValue];
 }
-
+-(NSNumber *)getX
+{
+    return x;
+}
 /**
  * Sets y position of character. Overrides Sprite.y to set internal Vector2D position as well.
  */
--(void)setY:(float)value
+-(void)setY:(NSNumber *)value
 {
     y = value;
-    _positionV2D->y = y;
+    positionV2D->y = [y floatValue];
+}
+-(NSNumber *)getY
+{
+    return y;
 }
 @end
