@@ -19,6 +19,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[GPVehicle bounce]:GPVehicle.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[Vector2D truncateV2D:]:Vector2D.m">
          <PersistentStrings>
             <PersistentString

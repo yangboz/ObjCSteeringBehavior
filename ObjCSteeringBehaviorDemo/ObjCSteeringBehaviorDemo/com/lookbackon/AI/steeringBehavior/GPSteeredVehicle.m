@@ -34,7 +34,7 @@
     //
     self.mass = [[NSNumber alloc] initWithFloat:1.0];
     self.maxSpeed  = [[NSNumber alloc] initWithFloat:10.0];
-    self.edgeBehavior = [[NSString alloc] initWithString:@"wrap"];
+    self.edgeBehavior = BOUNCE;
     //
     [super initVariables];
 }
@@ -78,7 +78,13 @@
 }
 -(void)wander
 {
-    
+    Vector2D *center = [[[self.velocityV2D copy] normalize]mult:[wanderDistance floatValue]];
+    Vector2D *offset = [[Vector2D alloc] initWithX:0 Y:0];
+    offset.length = [wanderRadius floatValue];
+    offset.angle = [wanderAngle floatValue];
+    wanderRange= [[NSNumber alloc] initWithFloat:( arc4random_uniform(1) * [wanderRange floatValue] - [wanderRange floatValue] * .5)];
+    Vector2D *force = [center add:offset];
+    self->steeringForce = [self->steeringForce add:force];
 }
 -(void)avoid:(NSArray*)circles
 {

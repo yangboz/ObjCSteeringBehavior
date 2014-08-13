@@ -8,6 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "Vector2D.h"
+
+// potential edge behaviors
+#define WRAP @"wrap";
+#define BOUNCE @"bounce";
 /**
  * Base class for moving characters.
  */
@@ -50,4 +54,12 @@
 -(void)update;
 //
 -(void)initVariables;
+/**
+ * Sets SKSpriteScene windowSize to bounce/wrap usage.
+ */
+@property(retain,nonatomic) NSNumber *winWidth;
+/**
+ * Sets SKSpriteScene windowSize to bounce/wrap usage.
+ */
+@property(retain,nonatomic) NSNumber *winHeight;
 @end

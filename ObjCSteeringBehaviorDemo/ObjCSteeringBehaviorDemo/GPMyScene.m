@@ -43,6 +43,8 @@ Vector2D *newPosition;
         //        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
         
         //        [sprite runAction:[SKAction repeatActionForever:action]];
+        sprite.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
+        sprite.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
         [self addChild:sprite];
     }
     return self;
@@ -75,7 +77,8 @@ Vector2D *newPosition;
     if(newPosition!=NULL)
     {
 //        sprite.position = CGPointMake(newPosition->x,newPosition->y);
-        [sprite arrive:newPosition];
+//        [sprite arrive:newPosition];
+        [sprite wander];
         [sprite update];
     }
 }

@@ -17,11 +17,8 @@
 //NSNumber* _maxSpeed;// = 10;
 //Vector2D * _positionV2D;
 //Vector2D * _velocityV2D;
-// potential edge behaviors
-#define WRAP @"wrap";
-#define BOUNCE @"bounce";
 //
-@synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior,x,y;
+@synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior,x,y,winWidth,winHeight;
 //value initilaziation
 - (void)initVariables
 {
@@ -51,14 +48,14 @@
     // add velocity to position
     positionV2D = [positionV2D add:velocityV2D];
     // handle any edge behavior
-//    if([edgeBehavior isEqual:@"wrap"])
-//    {
-//        [self wrap];
-//    }
-//    else if([edgeBehavior isEqual:@"bounce"] )
-//    {
-//        [self bounce];
-//    }
+    if([edgeBehavior isEqual:@"wrap"])
+    {
+        [self wrap];
+    }
+    else if([edgeBehavior isEqual:@"bounce"] )
+    {
+        [self bounce];
+    }
     
     // update position of sprite
     x = [[NSNumber alloc] initWithFloat: positionV2D->x];
@@ -78,9 +75,9 @@
 {
     if(YES)
     {
-        if(positionV2D->x > self.size.width)
+        if(positionV2D->x > [self.winWidth floatValue])
         {
-            positionV2D->x = self.size.width;
+            positionV2D->x = [self.winWidth floatValue];
             velocityV2D->x *= -1;
         }
         else if(positionV2D->x < 0)
@@ -89,9 +86,9 @@
             velocityV2D->x *= -1;
         }
         
-        if(velocityV2D->y > self.size.height)
+        if(velocityV2D->y > [self.winHeight floatValue])
         {
-            positionV2D->y = self.size.height;
+            positionV2D->y = [self.winHeight floatValue];
             velocityV2D->y *= -1;
         }
         else if(velocityV2D->y < 0)
@@ -109,10 +106,10 @@
 {
     if(YES)//stage != NULL
     {
-        if(positionV2D->x > self.size.width) positionV2D->x = 0;
-        if(positionV2D->x < 0) positionV2D->x = self.size.width;
-        if(positionV2D->y > self.size.height) positionV2D->y = 0;
-        if(positionV2D->y < 0) positionV2D->y = self.size.height;
+        if(positionV2D->x > [self.winWidth floatValue]) positionV2D->x = 0;
+        if(positionV2D->x < 0) positionV2D->x =  [self.winWidth floatValue];
+        if(positionV2D->y >  [self.winHeight floatValue]) positionV2D->y = 0;
+        if(positionV2D->y < 0) positionV2D->y =  [self.winHeight floatValue];
     }
 }
 
@@ -161,7 +158,7 @@
     x = [[NSNumber alloc] initWithFloat:positionV2D->x];
     y = [[NSNumber alloc] initWithFloat:positionV2D->y];
 }
--(Vector2D *)getPosition
+-(Vector2D *)getPositionV2D
 {
     return positionV2D;
 }
