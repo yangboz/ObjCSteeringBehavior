@@ -19,7 +19,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[GPSteeredVehicle arrive:]:GPSteeredVehicle.m">
+         contextName = "-[Vector2D truncateV2D:]:Vector2D.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.length">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[GPVehicle update]:GPVehicle.m">

@@ -10,14 +10,13 @@
 
 @implementation GPSteeredVehicle
 //
-@synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior;
 @synthesize arrivalThreshold,avoidDistance,avoidBuffer,pathThreshold,pathIndex;
 //value initilaziation
 - (void)initVariables
 {
     steeringForce = [[Vector2D alloc] initWithX:0 Y:0];
-    positionV2D = [[Vector2D alloc] initWithX:0 Y:0];
-    velocityV2D = [[Vector2D alloc] initWithX:0 Y:0];
+    self.positionV2D = [[Vector2D alloc] initWithX:0 Y:0];
+    self.velocityV2D = [[Vector2D alloc] initWithX:0 Y:0];
     //
     maxForce = [[NSNumber alloc] initWithFloat:1.0];
 //
@@ -33,9 +32,9 @@
     inSightDist = [[NSNumber alloc] initWithFloat:200.0];
     tooCloseDist = [[NSNumber alloc] initWithFloat:60.0];
     //
-    mass = [[NSNumber alloc] initWithFloat:1.0];
-    maxSpeed  = [[NSNumber alloc] initWithFloat:10.0];
-    edgeBehavior = [[NSString alloc] initWithString:@"wrap"];
+    self.mass = [[NSNumber alloc] initWithFloat:1.0];
+    self.maxSpeed  = [[NSNumber alloc] initWithFloat:10.0];
+    self.edgeBehavior = [[NSString alloc] initWithString:@"wrap"];
     //
     [super initVariables];
 }
@@ -51,22 +50,23 @@
 -(void)arrive:(Vector2D*)target
 {
     //
-    Vector2D *desiredVelocity = [target sub:positionV2D];
+    Vector2D *desiredVelocity = [Vector2D sub:target with:self.positionV2D];
     [desiredVelocity normalize];
-    
-    float dist = [positionV2D dist:target];
+    //
+    float dist = [self.positionV2D dist:target];
+    NSLog(@"dist:%f",dist);
     if(dist > [arrivalThreshold floatValue])
     {
-        desiredVelocity = [desiredVelocity mult:[maxSpeed floatValue]];
+        desiredVelocity = [desiredVelocity mult:[self.maxSpeed floatValue]];
     }
     else
     {
-        desiredVelocity = [desiredVelocity mult:[maxSpeed floatValue] * dist/[arrivalThreshold floatValue]];
+        desiredVelocity = [desiredVelocity mult:[self.maxSpeed floatValue] * dist/[arrivalThreshold floatValue]];
     }
-    
-    Vector2D *force = [desiredVelocity sub:velocityV2D];
+    NSLog(@"desiredVelocity:%@",desiredVelocity);
+    Vector2D *force = [desiredVelocity sub:self.velocityV2D];
     steeringForce = [steeringForce add:force];
-    NSLog(@"SteeredVehicle arrive:(%f,%f)",target->x,target->y);
+    NSLog(@"SteeredVehicle arrive:%@,force:%@",target,steeringForce);
 }
 -(void)pursue:(Vector2D*)target
 {
@@ -102,8 +102,10 @@
 -(void)update
 {
     [steeringForce truncateV2D:[maxForce floatValue]];
-    steeringForce = [steeringForce div:[mass floatValue]];
-    velocityV2D = [velocityV2D add:steeringForce];
+    self->steeringForce = [Vector2D div:self->steeringForce with:[self.mass floatValue]];
+    self.velocityV2D = [self.velocityV2D add:steeringForce];
+    NSLog(@"mass:%f,force:%@,velocityV2D:%@",[self.mass floatValue],self->steeringForce,self.velocityV2D);
+    //Reset
     steeringForce = [[Vector2D alloc] initWithX:0.0 Y:0.0];
     [super update];
 }

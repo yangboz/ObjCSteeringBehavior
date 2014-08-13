@@ -34,7 +34,7 @@ Vector2D *newPosition;
         //        GPVehicle *sprite = [GPVehicle spriteNodeWithImageNamed:@"Spaceship"];
         //        sprite = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
         sprite = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
-        sprite.position = CGPointMake(winSize.width/2, winSize.height/2);
+        sprite.position = CGPointMake(0, 0);
         [sprite initVariables];//SteeredBehavior variables init;
         [sprite setXScale:0.1];
         [sprite setYScale:0.1];
@@ -74,9 +74,9 @@ Vector2D *newPosition;
      */
     if(newPosition!=NULL)
     {
-        sprite.position = CGPointMake(newPosition->x,newPosition->y);
-//        [sprite arrive:newPosition];
-//        [sprite update];
+//        sprite.position = CGPointMake(newPosition->x,newPosition->y);
+        [sprite arrive:newPosition];
+        [sprite update];
     }
 }
 

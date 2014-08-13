@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "GPIVehicle.h"
 #import "GPIArrive.h"
 #import "GPIAvoid.h"
 #import "GPIEvade.h"
@@ -19,6 +18,7 @@
 #import "GPIPursue.h"
 #import "GPISeek.h"
 #import "GPIWander.h"
+
 
 @protocol GPISteeredVehicle <GPIArrive,GPIAvoid,GPIEvade,GPIFlee,GPIFollowPath,GPIFlock,GPIFlock,GPIPursue,GPISeek,GPIWander>
 

@@ -21,7 +21,7 @@
 #define WRAP @"wrap";
 #define BOUNCE @"bounce";
 //
-@synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior;
+@synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior,x,y;
 //value initilaziation
 - (void)initVariables
 {
@@ -68,7 +68,7 @@
     rotation = [velocityV2D angle] * 180 / M_PI;
     // Manully move SKSpriteNode;
     self.position = CGPointMake([x floatValue], [y floatValue]);
-    NSLog(@"Update position:%f,%f",self.position.x,self.position.y);
+    NSLog(@"Update position:<%f,%f>,velocity:%@",self.position.x,self.position.y,velocityV2D);
 }
 
 /**

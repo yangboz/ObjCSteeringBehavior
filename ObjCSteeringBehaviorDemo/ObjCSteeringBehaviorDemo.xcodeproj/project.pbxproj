@@ -73,7 +73,6 @@
 		652625D0199337D900581D80 /* Vector2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector2D.h; sourceTree = "<group>"; };
 		652625D1199337D900581D80 /* Vector2D.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vector2D.m; sourceTree = "<group>"; };
 		652625D41993386C00581D80 /* GPIArrive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIArrive.h; sourceTree = "<group>"; };
-		652625D51993396D00581D80 /* GPIVehicle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIVehicle.h; sourceTree = "<group>"; };
 		652625D619933A3B00581D80 /* GPIAvoid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIAvoid.h; sourceTree = "<group>"; };
 		652625D719933A9A00581D80 /* GPIEvade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIEvade.h; sourceTree = "<group>"; };
 		652625D819933ADD00581D80 /* GPIFlee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIFlee.h; sourceTree = "<group>"; };
@@ -225,7 +224,6 @@
 				652625D41993386C00581D80 /* GPIArrive.h */,
 				652625D0199337D900581D80 /* Vector2D.h */,
 				652625D1199337D900581D80 /* Vector2D.m */,
-				652625D51993396D00581D80 /* GPIVehicle.h */,
 				652625D619933A3B00581D80 /* GPIAvoid.h */,
 				652625D719933A9A00581D80 /* GPIEvade.h */,
 				652625D819933ADD00581D80 /* GPIFlee.h */,
