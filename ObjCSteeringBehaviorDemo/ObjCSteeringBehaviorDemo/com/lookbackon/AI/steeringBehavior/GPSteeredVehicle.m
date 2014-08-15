@@ -140,19 +140,70 @@
 }
 -(void)followPath:(NSArray*)path loop:(BOOL)loop
 {
-    
+    Vector2D *wayPoint = [path objectAtIndex:[self.pathIndex intValue]];
+    if (wayPoint==NULL) {
+        return;
+    }
+    if ([self.positionV2D dist:wayPoint] <[pathThreshold floatValue]) {
+        if ([pathIndex intValue]>=[path count]){
+            if (loop) {
+                pathIndex = 0;
+            }else
+            {
+                pathIndex = [[NSNumber alloc] initWithInt:([pathIndex intValue]+1)];
+            }
+        }
+    }
+    if ([pathIndex intValue]>=([path count]-1) && !loop) {
+        [self arrive:wayPoint];
+    }else
+    {
+        [self seek:wayPoint];
+    }
 }
--(void)flock:(NSArray*)circles
+-(void)flock:(NSArray*)vehicles
 {
-    
+    Vector2D *averageVelocity = [self.velocityV2D copy];
+    Vector2D *averagePosition = [[Vector2D alloc] initWithX:0 Y:0];
+    int inSightCount = 0;
+    //
+    for(int i = 0; i < [vehicles count]; i++)
+    {
+        GPVehicle *vehicle = (GPVehicle *)[vehicles objectAtIndex:i];
+        
+        if(vehicle != self && [self inSight:vehicle])
+        {
+            averageVelocity = [averageVelocity add:vehicle.velocityV2D];
+            averagePosition = [averagePosition add:vehicle.positionV2D];
+            if ([self tooClose:vehicle]) {
+                [self flee:vehicle.positionV2D];
+            }
+            inSightCount++;
+        }
+    }
+    if(inSightCount > 0)
+    {
+        averageVelocity = [averageVelocity div:inSightCount];
+        averagePosition = [averagePosition div:inSightCount];
+        [self seek:averagePosition];
+        [steeringForce add:[averageVelocity sub:self.velocityV2D]];
+    }
 }
 -(BOOL)inSight:(GPVehicle *)vehicle
 {
-    return NO;
+    if ([self.positionV2D dist:vehicle.positionV2D]>[inSightDist floatValue]) {
+        return NO;
+    }
+    Vector2D *heading = [[self.velocityV2D copy] normalize];
+    Vector2D *difference = [[vehicle positionV2D] sub:self.positionV2D];
+    float dotProd = [difference dot:heading];
+    
+    if(dotProd < 0) return NO;
+    return YES;
 }
 -(BOOL)tooClose:(GPVehicle *)vehicle
 {
-    return NO;
+    return [self.positionV2D dist:vehicle.positionV2D]<[tooCloseDist floatValue];
 }
 -(void)update
 {

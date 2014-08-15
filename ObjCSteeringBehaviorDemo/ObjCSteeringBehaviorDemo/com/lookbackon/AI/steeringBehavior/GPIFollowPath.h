@@ -12,4 +12,5 @@
 @required
 @property(retain,nonatomic) NSNumber *pathIndex;
 @property(retain,nonatomic) NSNumber *pathThreshold;
+-(void)followPath:(NSArray*)path loop:(BOOL)loop;
 @end

@@ -30,6 +30,8 @@ GPSteeredVehicle *pursuer;
 GPSteeredVehicle *pursueTarget;
 //PursueEvade
 GPSteeredVehicle *evader;
+//FollowPath
+NSMutableArray *path;
 //
 @synthesize selectedBehavior;
 //
@@ -136,6 +138,7 @@ GPSteeredVehicle *evader;
         evader.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
         evader.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
         [self addChild:evader];
+        
     }
     return self;
 }
@@ -146,6 +149,9 @@ GPSteeredVehicle *evader;
         CGPoint location = [touch locationInNode:self];
         //
         newPosition = [[Vector2D alloc] initWithX:location.x  Y:location.y];
+        //FollowPath
+        Vector2D *wayPoint = [[Vector2D alloc] initWithX:location.x Y:location.y];
+        [path addObject:wayPoint];
     }
 }
 
@@ -184,7 +190,8 @@ GPSteeredVehicle *evader;
             [vehicle update];
         }else if([selectedBehavior isEqualToString:@"FollowPath"])
         {
-//            [vehicle f
+            [vehicle followPath:path loop:YES];
+            [vehicle update];
         }else if([selectedBehavior isEqualToString:@"Flock"])
         {
             if ([flocks count]<numFlocks) {
