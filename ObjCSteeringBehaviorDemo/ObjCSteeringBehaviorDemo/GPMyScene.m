@@ -25,6 +25,9 @@ GPSteeredVehicle *fleer;
 GPSteeredVehicle *vehicleA;
 GPSteeredVehicle *vehicleB;
 GPSteeredVehicle *vehicleC;
+//Pursue
+GPSteeredVehicle *pursuer;
+GPSteeredVehicle *pursueTarget;
 //
 @synthesize selectedBehavior;
 //
@@ -103,6 +106,25 @@ GPSteeredVehicle *vehicleC;
         vehicleC.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
         vehicleC.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
         [self addChild:vehicleC];
+        //Pursue
+        pursuer = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+        pursuer.position = CGPointMake(400, 0);
+        pursuer.positionV2D = [[Vector2D alloc] initWithX:400 Y:0];
+        [pursuer setXScale:0.1];
+        [pursuer setYScale:0.1];
+        pursuer.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
+        pursuer.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
+        [self addChild:pursuer];
+        //PursueTarget
+        pursueTarget = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+        pursueTarget.position = CGPointMake(200, 300);
+        pursueTarget.positionV2D = [[Vector2D alloc] initWithX:200 Y:300];
+        [pursueTarget setXScale:0.05];
+        [pursueTarget setYScale:0.05];
+        pursueTarget.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
+        pursueTarget.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
+        pursueTarget.velocityV2D.length = 15;
+        [self addChild:pursueTarget];
     }
     return self;
 }
@@ -175,7 +197,13 @@ GPSteeredVehicle *vehicleC;
 			}
         }else if([selectedBehavior isEqualToString:@"Pursue"])
         {
-//            [vehicle pursue:<#(GPVehicle *)#>
+            [seeker seek:pursueTarget.positionV2D];
+            [seeker update];
+			
+            [pursuer pursue:pursueTarget];
+			[pursuer update];
+			
+			[pursueTarget update];
         }else if([selectedBehavior isEqualToString:@"Seek"])
         {
             [vehicle seek:newPosition];

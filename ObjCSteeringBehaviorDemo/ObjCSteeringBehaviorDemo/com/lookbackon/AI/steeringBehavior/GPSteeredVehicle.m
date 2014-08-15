@@ -76,9 +76,11 @@
     //
     NSLog(@"SteeredVehicle arrive:%@,force:%@,dist:%f,desiredVelocity:%@",target,steeringForce,dist,desiredVelocity);
 }
--(void)pursue:(Vector2D*)target
+-(void)pursue:(GPVehicle*)target
 {
-    
+    float lookAheadtime  = [self.positionV2D dist:target.positionV2D]/[self.maxSpeed floatValue];
+    Vector2D *predictedTarget = [target.positionV2D add:[target.velocityV2D mult:lookAheadtime]];
+    [self seek:predictedTarget];
 }
 -(void)evade:(Vector2D*)target
 {
