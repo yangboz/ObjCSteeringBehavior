@@ -41,7 +41,11 @@
 #pragma mark -protocols
 -(void)seek:(Vector2D*)target
 {
-    
+    Vector2D *desiredVelocity = [target sub:self.positionV2D];
+    [desiredVelocity normalize];
+    desiredVelocity = [desiredVelocity mult:[self.maxSpeed floatValue]];
+    Vector2D *force = [desiredVelocity sub:self.velocityV2D];
+    steeringForce = [steeringForce add:force];
 }
 -(void)flee:(Vector2D*)target
 {
@@ -49,7 +53,7 @@
     [desiredVelocity normalize];
     desiredVelocity = [desiredVelocity mult:[self.maxSpeed floatValue]];
     Vector2D *force = [desiredVelocity sub:self.velocityV2D];
-    steeringForce = [steeringForce sub:force] ;
+    steeringForce = [steeringForce sub:force];
 }
 -(void)arrive:(Vector2D*)target
 {

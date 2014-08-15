@@ -18,6 +18,9 @@ int numCircles = 5;
 //Flock
 int numFlocks = 5;
 NSMutableArray *flocks;
+//Seek
+GPSteeredVehicle *seeker;
+GPSteeredVehicle *fleer;
 //
 @synthesize selectedBehavior;
 //
@@ -55,6 +58,16 @@ NSMutableArray *flocks;
         //Private variable init here:
         circles = [[NSMutableArray alloc] init];
         flocks = [[NSMutableArray alloc] init];
+        seeker = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+        seeker.position = CGPointMake(0, 0);
+        [seeker setXScale:0.1];
+        [seeker setYScale:0.1];
+        [self addChild:seeker];
+        fleer = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+        fleer.position = CGPointMake(0, 0);
+        [fleer setXScale:0.1];
+        [fleer setYScale:0.1];
+        [self addChild:fleer];
     }
     return self;
 }
@@ -130,7 +143,17 @@ NSMutableArray *flocks;
 //            [vehicle pursue:<#(GPVehicle *)#>
         }else if([selectedBehavior isEqualToString:@"Seek"])
         {
-//            [vehicle seek:<#(Vector2D *)#>
+            [vehicle seek:newPosition];
+            [vehicle update];
+        }else if([selectedBehavior isEqualToString:@"SeekFlee_01"])
+        {
+            [seeker seek:fleer.positionV2D];
+            [fleer flee:seeker.positionV2D];
+            [seeker update];
+            [fleer update];
+        }else if([selectedBehavior isEqualToString:@"SeekFlee_02"])
+        {
+            
         }else if([selectedBehavior isEqualToString:@"Wander"])
         {
             [vehicle wander];
