@@ -31,7 +31,7 @@ GPMyScene *scene;
     // Present the scene.
     [skView presentScene:scene];
     //UIKit
-    steeringBehaviours = [[NSArray alloc] initWithObjects:@"Arrive",@"Avoid",@"Evade",@"Flee",@"FollowPath",@"Flock",@"Pursue",@"Seek",@"SeekFlee_01",@"SeekFlee_02",@"Wander",nil];
+    steeringBehaviours = [[NSArray alloc] initWithObjects:@"Arrive",@"Avoid",@"Evade",@"Flee",@"FollowPath",@"Flock",@"Pursue",@"PursueEvade",@"Seek",@"SeekFlee_01",@"SeekFlee_02",@"Wander",nil];
     //Connect data
     self.behaviorsPickerView.dataSource = self;
     self.behaviorsPickerView.delegate = self;

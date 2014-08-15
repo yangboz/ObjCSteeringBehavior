@@ -82,9 +82,11 @@
     Vector2D *predictedTarget = [target.positionV2D add:[target.velocityV2D mult:lookAheadtime]];
     [self seek:predictedTarget];
 }
--(void)evade:(Vector2D*)target
+-(void)evade:(GPVehicle*)target
 {
-    
+    float lookAheadtime = [self.positionV2D dist:target.positionV2D]/[self.maxSpeed floatValue];
+    Vector2D *predictedTarget = [target.positionV2D sub:[target.velocityV2D mult:lookAheadtime]];
+    [self flee:predictedTarget];
 }
 -(void)wander
 {

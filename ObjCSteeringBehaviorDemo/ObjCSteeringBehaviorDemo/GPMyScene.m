@@ -28,6 +28,8 @@ GPSteeredVehicle *vehicleC;
 //Pursue
 GPSteeredVehicle *pursuer;
 GPSteeredVehicle *pursueTarget;
+//PursueEvade
+GPSteeredVehicle *evader;
 //
 @synthesize selectedBehavior;
 //
@@ -125,6 +127,15 @@ GPSteeredVehicle *pursueTarget;
         pursueTarget.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
         pursueTarget.velocityV2D.length = 15;
         [self addChild:pursueTarget];
+        //PursueEvade
+        evader = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+        evader.position = CGPointMake(400, 300);
+        evader.positionV2D = [[Vector2D alloc] initWithX:400 Y:300];
+        [evader setXScale:0.1];
+        [evader setYScale:0.1];
+        evader.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
+        evader.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
+        [self addChild:evader];
     }
     return self;
 }
@@ -204,6 +215,12 @@ GPSteeredVehicle *pursueTarget;
 			[pursuer update];
 			
 			[pursueTarget update];
+        }else if([selectedBehavior isEqualToString:@"PursueEvade"])
+        {
+            [pursuer pursue:evader];
+            [evader evade:pursuer];
+            [pursuer update];
+            [evader update];
         }else if([selectedBehavior isEqualToString:@"Seek"])
         {
             [vehicle seek:newPosition];
