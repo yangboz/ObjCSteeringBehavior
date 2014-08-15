@@ -73,8 +73,6 @@
  */
 -(void)bounce
 {
-    if(YES)
-    {
         if(positionV2D->x > [self.winWidth floatValue])
         {
             positionV2D->x = [self.winWidth floatValue];
@@ -86,17 +84,16 @@
             velocityV2D->x *= -1;
         }
         
-        if(velocityV2D->y > [self.winHeight floatValue])
+        if(positionV2D->y > [self.winHeight floatValue])
         {
             positionV2D->y = [self.winHeight floatValue];
             velocityV2D->y *= -1;
         }
-        else if(velocityV2D->y < 0)
+        else if(positionV2D->y < 0)
         {
             positionV2D->y = 0;
             velocityV2D->y *= -1;
         }
-    }
 }
 
 /**

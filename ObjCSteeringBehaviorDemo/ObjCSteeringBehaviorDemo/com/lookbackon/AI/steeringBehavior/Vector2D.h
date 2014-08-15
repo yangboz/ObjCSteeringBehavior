@@ -72,4 +72,6 @@
 -(float)dist:(Vector2D *)other;
 -(float)distSQ:(Vector2D *)other;
 
+-(int)sign:(Vector2D *)other;
+
 @end

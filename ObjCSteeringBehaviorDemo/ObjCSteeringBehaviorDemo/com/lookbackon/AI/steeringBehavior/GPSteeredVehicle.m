@@ -82,12 +82,49 @@
     Vector2D *offset = [[Vector2D alloc] initWithX:0 Y:0];
     offset.length = [wanderRadius floatValue];
     offset.angle = [wanderAngle floatValue];
-    wanderRange= [[NSNumber alloc] initWithFloat:( arc4random_uniform(1) * [wanderRange floatValue] - [wanderRange floatValue] * .5)];
+    wanderRange= [[NSNumber alloc] initWithFloat:( arc4random_uniform(10) * [wanderRange floatValue] - [wanderRange floatValue] * .5)];
     Vector2D *force = [center add:offset];
     self->steeringForce = [self->steeringForce add:force];
 }
 -(void)avoid:(NSArray*)circles
 {
+    for(int i = 0; i < circles.count; i++)
+    {
+        GPSteeredVehicle* circle = (GPSteeredVehicle*)[circles objectAtIndex:i];
+        Vector2D *heading =
+        [[self.velocityV2D copy] normalize];
+        
+        // vector between circle and vehicle:
+        Vector2D *difference = [circle.positionV2D sub:self.positionV2D];
+        float dotProd = [difference dot:heading];
+        // if circle is in front of vehicle...
+        if(dotProd > 0)
+        {
+            // vector to represent "feeler" arm
+            Vector2D *feeler = [heading mult:[self.avoidDistance floatValue]];
+            // project difference vector onto feeler
+            Vector2D *projection = [heading mult:dotProd];
+            // distance from circle to feeler
+            float dist = [projection sub:difference].length;
+            // if feeler intersects circle (plus buffer),
+            //and projection is less than feeler length,
+            // we will collide, so need to steer
+            if(dist < circle.size.width + [avoidBuffer floatValue] &&
+               projection.length < feeler.length)
+            {
+                // calculate a force +/- 90 degrees from vector to circle
+                Vector2D *force = [heading mult:[self.maxSpeed floatValue]];
+                force.angle += [difference sign:self.velocityV2D]*kPI/2;
+                // scale this force by distance to circle.
+                // the further away, the smaller the force
+                force = [force mult:(1.0-projection.length)/feeler.length ];
+                // add to steering force
+                steeringForce = [steeringForce add:force];
+                // braking force
+                self.velocityV2D = [self.velocityV2D mult:(projection.length/feeler.length)];
+            }
+        }
+    }
 }
 -(void)followPath:(NSArray*)path loop:(BOOL)loop
 {

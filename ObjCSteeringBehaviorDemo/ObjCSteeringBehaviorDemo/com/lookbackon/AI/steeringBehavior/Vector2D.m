@@ -303,4 +303,12 @@ static Vector2D* xy = nil;
     float dy = other->y - y;
     return dx * dx + dy * dy;
 }
+/**
+ * Determines if a given vector is to the right or left of this vector.
+ * @return int If to the left, returns -1. If to the right, +1.
+ */
+-(int)sign:(Vector2D*)other
+{
+    return [self.perp dot:other ] < 0 ? -1 :1;
+}
 @end

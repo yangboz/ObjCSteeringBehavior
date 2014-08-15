@@ -12,6 +12,7 @@
 GPSteeredVehicle *vehicle=NULL;//SteeredVehicle;
 CGSize winSize;
 Vector2D *newPosition;
+NSMutableArray *circles;//circle style SteeredVehicles;
 //
 @synthesize selectedBehavior;
 //
@@ -47,6 +48,8 @@ Vector2D *newPosition;
         vehicle.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
         vehicle.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
         [self addChild:vehicle];
+        //
+        circles = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -62,21 +65,30 @@ Vector2D *newPosition;
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    //ArriveTest
-    /*
-    CGFloat rX = 0 + arc4random_uniform(winSize.width - 0 + 1);
-    CGFloat rY = 0 + arc4random_uniform(winSize.height - 0 + 1);
-    CGPoint random = CGPointMake(rX, rY);
-     */
     if(newPosition!=NULL)
     {
 //        vehicle.position = random;
 //        vehicle.position = CGPointMake(newPosition->x,newPosition->y);
+        //
         if ([selectedBehavior isEqualToString:@"Arrive"]) {
             [vehicle arrive:newPosition];
         }else if([selectedBehavior isEqualToString:@"Avoid"])
         {
-//            [vehicle avoid:<#(NSArray *)#>
+            if ([circles count]<5) {
+                for(int i = 0; i < 5; i++)
+                {
+                    GPSteeredVehicle *circle = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+                    [circle setScale:[self getRandomX]];
+                    circle.position = [self getRandomPoint];
+                    circle.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
+                    circle.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
+                    [self addChild:circle];
+                    [circles addObject:circle];
+                }
+            }
+            //
+            [vehicle wander];
+            [vehicle avoid:circles];
         }else if([selectedBehavior isEqualToString:@"Evade"])
         {
 //            [vehicle evade:<#(GPVehicle *)#>
@@ -104,6 +116,24 @@ Vector2D *newPosition;
         }
         [vehicle update];
     }
+}
+//Random values.
+-(CGFloat)getRandomX
+{
+    CGFloat rX = ((float)rand() / RAND_MAX) * 1;
+    return rX;
+}
+-(CGFloat)getRandomY
+{
+    CGFloat rY = arc4random_uniform(1);
+    return rY;
+}
+-(CGPoint)getRandomPoint
+{
+    CGFloat rX = 0 + arc4random_uniform(winSize.width - 0 + 1);
+    CGFloat rY = 0 + arc4random_uniform(winSize.height - 0 + 1);
+    CGPoint rPoint = CGPointMake(rX, rY);
+    return rPoint;
 }
 
 @end
