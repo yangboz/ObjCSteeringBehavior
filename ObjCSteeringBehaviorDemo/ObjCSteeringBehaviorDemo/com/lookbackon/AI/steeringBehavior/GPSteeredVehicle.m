@@ -11,15 +11,14 @@
 @implementation GPSteeredVehicle
 //
 @synthesize arrivalThreshold,avoidDistance,avoidBuffer,pathThreshold,pathIndex;
-//value initilaziation
-- (void)initVariables
+-(instancetype)initWithImageNamed:(NSString *)name
 {
     steeringForce = [[Vector2D alloc] initWithX:0 Y:0];
     self.positionV2D = [[Vector2D alloc] initWithX:0 Y:0];
     self.velocityV2D = [[Vector2D alloc] initWithX:0 Y:0];
     //
     maxForce = [[NSNumber alloc] initWithFloat:1.0];
-//
+    //
     arrivalThreshold = [[NSNumber alloc] initWithFloat:100.0];
     wanderAngle = [[NSNumber alloc] initWithFloat:0.0];
     wanderDistance = [[NSNumber alloc] initWithFloat:10.0];
@@ -36,8 +35,9 @@
     self.maxSpeed  = [[NSNumber alloc] initWithFloat:10.0];
     self.edgeBehavior = BOUNCE;
     //
-    [super initVariables];
+    return [super initWithImageNamed:name];
 }
+
 #pragma mark -protocols
 -(void)seek:(Vector2D*)target
 {
@@ -45,7 +45,11 @@
 }
 -(void)flee:(Vector2D*)target
 {
-    
+    Vector2D *desiredVelocity = [target sub:self.positionV2D];
+    [desiredVelocity normalize];
+    desiredVelocity = [desiredVelocity mult:[self.maxSpeed floatValue]];
+    Vector2D *force = [desiredVelocity sub:self.velocityV2D];
+    steeringForce = [steeringForce sub:force] ;
 }
 -(void)arrive:(Vector2D*)target
 {

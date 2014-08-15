@@ -12,7 +12,12 @@
 GPSteeredVehicle *vehicle=NULL;//SteeredVehicle;
 CGSize winSize;
 Vector2D *newPosition;
+//Avoid
 NSMutableArray *circles;//circle style SteeredVehicles;
+int numCircles = 5;
+//Flock
+int numFlocks = 5;
+NSMutableArray *flocks;
 //
 @synthesize selectedBehavior;
 //
@@ -37,7 +42,6 @@ NSMutableArray *circles;//circle style SteeredVehicles;
         //        vehicle = [GPSteeredVehicle spriteNodeWithImageNamed:@"Spaceship"];
         vehicle = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
         vehicle.position = CGPointMake(0, 0);
-        [vehicle initVariables];//SteeredBehavior variables init;
         [vehicle setXScale:0.1];
         [vehicle setYScale:0.1];
         [vehicle velocityV2D].length = 5;
@@ -48,8 +52,9 @@ NSMutableArray *circles;//circle style SteeredVehicles;
         vehicle.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
         vehicle.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
         [self addChild:vehicle];
-        //
+        //Private variable init here:
         circles = [[NSMutableArray alloc] init];
+        flocks = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -67,15 +72,14 @@ NSMutableArray *circles;//circle style SteeredVehicles;
     /* Called before each frame is rendered */
     if(newPosition!=NULL)
     {
-//        vehicle.position = random;
-//        vehicle.position = CGPointMake(newPosition->x,newPosition->y);
         //
         if ([selectedBehavior isEqualToString:@"Arrive"]) {
             [vehicle arrive:newPosition];
+            [vehicle update];
         }else if([selectedBehavior isEqualToString:@"Avoid"])
         {
-            if ([circles count]<5) {
-                for(int i = 0; i < 5; i++)
+            if ([circles count]<numCircles) {
+                for(int i = 0; i < numCircles; i++)
                 {
                     GPSteeredVehicle *circle = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
                     [circle setScale:[self getRandomX]];
@@ -89,18 +93,38 @@ NSMutableArray *circles;//circle style SteeredVehicles;
             //
             [vehicle wander];
             [vehicle avoid:circles];
+            [vehicle update];
         }else if([selectedBehavior isEqualToString:@"Evade"])
         {
 //            [vehicle evade:<#(GPVehicle *)#>
         }else if([selectedBehavior isEqualToString:@"Flee"])
         {
-//            [vehicle flee:<#(Vector2D *)#>
+            [vehicle flee:newPosition];
+            [vehicle update];
         }else if([selectedBehavior isEqualToString:@"FollowPath"])
         {
 //            [vehicle f
         }else if([selectedBehavior isEqualToString:@"Flock"])
         {
-//            [vehicle flock:<#(NSArray *)#>
+            if ([flocks count]<numFlocks) {
+                for(int i = 0; i < numFlocks; i++)
+                {
+                    GPSteeredVehicle *flock = [[GPSteeredVehicle alloc] initWithImageNamed:@"Spaceship"];
+                    [flock setScale:[self getRandomX]];
+                    flock.position = [self getRandomPoint];
+                    flock.velocityV2D = [[Vector2D alloc] initWithX:[self getRandomY] Y:[self getRandomY]];
+                    flock.winWidth =[[NSNumber alloc] initWithFloat:winSize.width];
+                    flock.winHeight =[[NSNumber alloc] initWithFloat:winSize.height];
+                    [self addChild:flock];
+                    [flocks addObject:flock];
+                }
+            }
+//
+            for(int i = 0; i < numFlocks; i++)
+			{
+                [(GPSteeredVehicle *)[flocks objectAtIndex:i] flock:flocks];
+				[(GPSteeredVehicle *)[flocks objectAtIndex:i] update];
+			}
         }else if([selectedBehavior isEqualToString:@"Pursue"])
         {
 //            [vehicle pursue:<#(GPVehicle *)#>
@@ -110,11 +134,12 @@ NSMutableArray *circles;//circle style SteeredVehicles;
         }else if([selectedBehavior isEqualToString:@"Wander"])
         {
             [vehicle wander];
+            [vehicle update];
         }else
         {
             //Unknow behaviors.
         }
-        [vehicle update];
+        
     }
 }
 //Random values.
@@ -125,7 +150,7 @@ NSMutableArray *circles;//circle style SteeredVehicles;
 }
 -(CGFloat)getRandomY
 {
-    CGFloat rY = arc4random_uniform(1);
+    CGFloat rY = ((float)rand() / RAND_MAX) * 10;
     return rY;
 }
 -(CGPoint)getRandomPoint

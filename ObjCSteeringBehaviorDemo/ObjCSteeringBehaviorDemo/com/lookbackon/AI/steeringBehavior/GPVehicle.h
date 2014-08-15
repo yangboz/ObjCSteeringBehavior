@@ -52,8 +52,6 @@
  * update vehicle 's properties.
  */
 -(void)update;
-//
--(void)initVariables;
 /**
  * Sets SKSpriteScene windowSize to bounce/wrap usage.
  */

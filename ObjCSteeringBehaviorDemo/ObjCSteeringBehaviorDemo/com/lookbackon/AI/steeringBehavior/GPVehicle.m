@@ -19,24 +19,12 @@
 //Vector2D * _velocityV2D;
 //
 @synthesize mass,maxSpeed,velocityV2D,positionV2D,edgeBehavior,x,y,winWidth,winHeight;
-//value initilaziation
-- (void)initVariables
+//
+-(instancetype)initWithImageNamed:(NSString *)name
 {
     positionV2D = [[Vector2D alloc] initWithX:0 Y:0];
     velocityV2D = [[Vector2D alloc] initWithX:0 Y:0];
-    [self draw];
-}
-/**
- * Default graphics for vehicle. Can be overridden in subclasses.
- */
--(void)draw
-{
-//    graphics.clear();
-//    graphics.lineStyle(0);
-//    graphics.moveTo(10, 0);
-//    graphics.lineTo(-10, 5);
-//    graphics.lineTo(-10, -5);
-//    graphics.lineTo(10, 0);
+    return [super initWithImageNamed:name];
 }
 /**
  * Handles all basic motion. Should be called on each frame / timer interval.
